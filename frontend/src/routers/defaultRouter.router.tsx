@@ -8,6 +8,10 @@ import Landing from '../views/Landing.view';
 
 const defaultRouter = createBrowserRouter([
   {
+    path: "/portfolio",
+    element: <Landing />,
+  },
+  {
     path: "/",
     element: <Landing />,
   },
