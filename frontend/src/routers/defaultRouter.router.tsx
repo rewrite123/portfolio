@@ -12,6 +12,10 @@ const defaultRouter = createBrowserRouter([
     element: <Landing />,
   },
   {
+    path: "/portfolio/",
+    element: <Landing />,
+  },
+  {
     path: "/",
     element: <Landing />,
   },
