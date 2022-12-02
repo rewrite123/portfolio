@@ -1,0 +1,164 @@
+.ih-land {
+  // min-height: 300vh;
+}
+
+.ih-land-jumbo {
+  min-height: 100vh;
+}
+
+.ih-land-jumbo-ctn {
+  height: 100%;
+}
+
+.ih-land-jumbo-grid {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.ih-land-tech {
+  
+  margin-top: 100px;
+  margin-bottom: 50px;
+
+  &.xs {
+    min-height: 760px;
+  }
+  &.sm {
+    min-height: 700px;
+  }
+  &.md {
+    min-height: 580px;
+  } 
+  &.lg {
+    min-height: 500px;
+  } 
+  &.xl {
+    min-height: 410px;
+  } 
+}
+
+.ih-land-tech-ctn {
+  background-color: var(--bg-primary);
+  padding: 0px 15px;
+  padding-bottom: 20px;
+  margin: 0px !important;
+}
+
+.ih-land-tech-xstack {
+  height: 100%;
+  min-height: 400px;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 5px;
+  
+  .xs & {
+    min-height: 300px;
+  }
+  .sm & {
+    min-height: 300px;
+  }
+  .xl & {
+    min-height: 300px;
+  }
+}
+
+.ih-land-tech-logos {
+  max-width: 120px;
+  max-height: 120px;
+
+  .xs & {
+    max-width: 75px;
+    max-height: 75px;
+  }
+  .sm & {
+    max-width: 90px;
+    max-height: 90px;
+  }
+}
+
+.ih-land-design {
+  min-height: 400px;
+
+  &.xs {
+    min-height: 600px;
+  }
+  &.sm {
+    min-height: 520px;
+  }
+  &.md {
+    min-height: 500px;
+  } 
+  &.lg {
+    min-height: 500px;
+  } 
+  &.xl {
+    min-height: 500px;
+  } 
+}
+
+.ih-land-design-ctn {
+  height: 100%;
+}
+
+.ih-land-design-grid {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ih-land-hobbies {
+  margin: 50px 0px;
+  min-height: 90vh;
+
+  &.xs {
+    min-height: 1300px;
+  }
+  &.sm {
+    min-height: 1000px;
+  }
+  
+
+}
+
+.ih-land-hobbies-ctn {
+  height: 100%;
+}
+
+.ih-land-hobbies-icon-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75px;
+  height: 75px;
+  margin-right: 5px;
+}
+
+.ih-land-hobbies-icon {
+  max-width: 75px;
+  max-height: 75px;
+}
+
+.ih-land-foot {
+  height: 175px;
+}
+
+.ih-land-foot-ctn {
+  height: 100%;
+}
+
+.ih-land-foot-icon-ctn {
+  font-size: 50px;
+}
+
+.ih-land-foot-icon {
+  color: #fff;
+  font-size: 50px;
+}
+
+.ih-land-foot-credits {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
