@@ -8,6 +8,7 @@
 
 .ih-land-jumbo-ctn {
   height: 100%;
+  width: 100%;
 }
 
 .ih-land-jumbo-grid {
@@ -21,19 +22,19 @@
   margin-top: 100px;
   margin-bottom: 50px;
 
-  &.xs {
+  .xs & {
     min-height: 760px;
   }
-  &.sm {
+  .sm & {
     min-height: 700px;
   }
-  &.md {
+  .md & {
     min-height: 580px;
   } 
-  &.lg {
+  .lg & {
     min-height: 500px;
   } 
-  &.xl {
+  .xl & {
     min-height: 410px;
   } 
 }
@@ -112,7 +113,7 @@
   min-height: 90vh;
 
   &.xs {
-    min-height: 1300px;
+    min-height: 1400px;
   }
   &.sm {
     min-height: 1000px;
@@ -145,6 +146,7 @@
 
 .ih-land-foot-ctn {
   height: 100%;
+  width: 100%;
 }
 
 .ih-land-foot-icon-ctn {
@@ -161,4 +163,16 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+.ih-land-foot-credits-text {
+  font-size: 48px;
+
+  .xs & {
+    font-size: 18px;
+  }
+  .sm & {
+    font-size: 28px;
+  }
+
 }

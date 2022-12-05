@@ -61,16 +61,14 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const Landing = ()=>{
 
   const theme = useTheme();
-  const xsUpMediaQuery = useMediaQuery(theme.breakpoints.up('xs'));
   const smUpMediaQuery = useMediaQuery(theme.breakpoints.up('sm'));
   const mdUpMediaQuery = useMediaQuery(theme.breakpoints.up('md'));
   const lgUpMediaQuery = useMediaQuery(theme.breakpoints.up('lg'));
   const xlUpMediaQuery = useMediaQuery(theme.breakpoints.up('xl'));
 
-
   return (
     <div
-      className="ih-land"
+      className={`ih-land ${xlUpMediaQuery? 'xl' : lgUpMediaQuery? 'lg' : mdUpMediaQuery? 'md' : smUpMediaQuery? 'sm' : 'xs'}`}
     >
       
       <ParallaxBanner
@@ -236,7 +234,7 @@ const Landing = ()=>{
             ),
           }
         ]}
-        className={`ih-land-tech ${xlUpMediaQuery? 'xl' : lgUpMediaQuery? 'lg' : mdUpMediaQuery? 'md' : smUpMediaQuery? 'sm' : 'xs'}`}
+        className={`ih-land-tech`}
       >
       </ParallaxBanner>
       
@@ -301,7 +299,7 @@ const Landing = ()=>{
             )
           }
         ]}
-        className={`ih-land-design ${xlUpMediaQuery? 'xl' : lgUpMediaQuery? 'lg' : mdUpMediaQuery? 'md' : smUpMediaQuery? 'sm' : 'xs'}`}
+        className={`ih-land-design`}
       >
       </ParallaxBanner>
 
@@ -472,14 +470,14 @@ const Landing = ()=>{
             )
           }
         ]}
-        className={`ih-land-hobbies ${xlUpMediaQuery? 'xl' : lgUpMediaQuery? 'lg' : mdUpMediaQuery? 'md' : smUpMediaQuery? 'sm' : 'xs'}`}
+        className={`ih-land-hobbies`}
       >
       </ParallaxBanner>
 
       <Box
         color="#fff"
         bgcolor="#000"
-        className="ih-land-foot"
+        className={`ih-land-foot`}
       >
         <Container
           maxWidth={false}
@@ -491,7 +489,7 @@ const Landing = ()=>{
           >
             <Grid
               item
-              md={6}
+              xs={6}
             >
               <Typography variant="h5" fontWeight="bold" textAlign="center" marginTop="10px">Find me here</Typography>
               <List
@@ -543,10 +541,10 @@ const Landing = ()=>{
             </Grid>
             <Grid
               item
-              md={6}
+              xs={6}
               className="ih-land-foot-credits"
             >
-              <Typography variant="h3">© Isaac Hormel</Typography>
+              <Typography><span className="ih-land-foot-credits-text">© Isaac Hormel</span></Typography>
             </Grid>
           </Grid>
         </Container>
