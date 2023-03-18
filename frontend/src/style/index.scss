@@ -1,7 +1,18 @@
 :root {
   --bg-primary: #fafafa;
   --bg-secondary: #f4f4f4;
-  
 }
 
-@import './views/Landing.view.scss';
+body {
+  background: #eee;
+  margin: 0px;
+  padding: 0px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+@font-face {
+  font-family: "Inter", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+}
+
+@import "./views/Landing.view.scss";

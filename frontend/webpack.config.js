@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: process.env.NODE_ENV||'development',
+  mode: process.env.NODE_ENV || 'development',
   entry: {
     main: './src/index.tsx'
   },
@@ -38,12 +38,16 @@ module.exports = {
         ],
       },
       {
+        test: /\.md$/i,
+        type: 'asset/source'
+      },
+      {
         test: /\.(jpe?g|svg|png|webp|gif|ico|eot|ttf|woff2?)(\?v=\d+\.\d+\.\d+)?$/i,
         type: 'asset/resource',
       },
     ]
   },
-  devtool: process.env.NODE_ENV=='production' ? undefined : 'source-map',
+  devtool: process.env.NODE_ENV == 'production' ? undefined : 'source-map',
   devServer: {
     historyApiFallback: true
   },
