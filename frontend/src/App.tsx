@@ -7,6 +7,7 @@ import { RouterProvider } from "react-router-dom";
 import defaultRouter from "./routers/defaultRouter.router";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { red } from "@mui/material/colors";
+import { Helmet } from "react-helmet";
 
 const App = () => {
   const theme = createTheme({
@@ -28,6 +29,12 @@ const App = () => {
 
   return (
     <React.StrictMode>
+      <Helmet>
+        <title>Isaac Hormel</title>
+        <meta property="og:title" content="Isaac Hormel" />
+        <meta property="og:description" content="Hi, I'm Isaac. I'm a fullstack developer specializing ing NodeJS and related MERN technologies." />
+        <meta property="og:image" content="/images/phoenixWingSquared.png" />
+      </Helmet>
       <ThemeProvider theme={theme}>
         <ParallaxProvider>
           <RouterProvider router={defaultRouter} />
