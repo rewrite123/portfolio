@@ -95,7 +95,15 @@ const Footer = () => {
                 variant="overline"
                 component="a"
                 href="/"
-                sx={{ textDecoration: "none", color: "white" }}
+                sx={{ textDecoration: "none", color: "white", height: "26px" }}
+              >
+                Home
+              </Typography>
+              <Typography
+                variant="overline"
+                component="a"
+                href="/about"
+                sx={{ textDecoration: "none", color: "white", height: "26px" }}
               >
                 About
               </Typography>
@@ -103,7 +111,7 @@ const Footer = () => {
                 variant="overline"
                 component="a"
                 href="/portfolio"
-                sx={{ textDecoration: "none", color: "white" }}
+                sx={{ textDecoration: "none", color: "white", height: "26px" }}
               >
                 Portfolio
               </Typography>
@@ -111,7 +119,7 @@ const Footer = () => {
                 variant="overline"
                 component="a"
                 href="/contact"
-                sx={{ textDecoration: "none", color: "white" }}
+                sx={{ textDecoration: "none", color: "white", height: "26px" }}
               >
                 Contact
               </Typography>
@@ -119,7 +127,7 @@ const Footer = () => {
                 variant="overline"
                 component="a"
                 href="/blog"
-                sx={{ textDecoration: "none", color: "white" }}
+                sx={{ textDecoration: "none", color: "white", height: "26px" }}
               >
                 Blog
               </Typography>

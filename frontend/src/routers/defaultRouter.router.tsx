@@ -6,6 +6,7 @@ import Portfolio from "../views/Portfolio.view";
 import Landing from "../views/Landing.view";
 import Blog from "../views/Blog.view";
 import BlogPage from "../views/BlogPage.view";
+import About from "../views/About.view";
 
 const defaultRouter = createBrowserRouter([
   {
@@ -38,11 +39,11 @@ const defaultRouter = createBrowserRouter([
   },
   {
     path: "/about",
-    element: <Landing />,
+    element: <About />,
   },
   {
     path: "/about/",
-    element: <Landing />,
+    element: <About />,
   },
   {
     path: "/",

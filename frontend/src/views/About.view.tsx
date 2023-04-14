@@ -61,36 +61,33 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 import Nav from "../components/Nav.comp";
-import Jumbotron from "../components/Jumbotron.comp";
-import ActionableData from "../components/ActionableData.comp";
-import BringYourIdeasToLife from "../components/BringYourIdeasToLife.comp";
-import AllInOneDeveloper from "../components/AllInOneDeveloper.comp";
-import OnBudgetAndOnTime from "../components/OnBudgetAndOnTime.comp";
 import Headline from "../components/Headline.comp";
+import Jumbotron from "../components/Jumbotron.comp";
+import AboutMeSummery from "../components/AboutMeSummery.comp";
+import Technologies from "../components/Technologies.comp";
+import Designs from "../components/Designs.comp";
+import Hobbies from "../components/Hobbies.comp";
 import Footer from "../components/Footer.comp";
 
-const Landing = () => {
-  // const theme = useTheme();
-  // const smUpMediaQuery = useMediaQuery(theme.breakpoints.up("sm"));
-  // const mdUpMediaQuery = useMediaQuery(theme.breakpoints.up("md"));
-  // const lgUpMediaQuery = useMediaQuery(theme.breakpoints.up("lg"));
-  // const xlUpMediaQuery = useMediaQuery(theme.breakpoints.up("xl"));
+const About = () => {
+  const theme = useTheme();
+  const smUpMediaQuery = useMediaQuery(theme.breakpoints.up("sm"));
+  const mdUpMediaQuery = useMediaQuery(theme.breakpoints.up("md"));
+  const lgUpMediaQuery = useMediaQuery(theme.breakpoints.up("lg"));
+  const xlUpMediaQuery = useMediaQuery(theme.breakpoints.up("xl"));
 
   return (
     <>
       <Nav />
       <Container>
-        <Jumbotron />
-        <ActionableData />
-        <BringYourIdeasToLife />
-        <AllInOneDeveloper />
-        <OnBudgetAndOnTime />
-        <Box sx={{ pt: 5 }}>
-          <Headline />
-        </Box>
+        <Headline />
+        <AboutMeSummery />
+        <Technologies />
+        <Designs />
+        <Hobbies />
       </Container>
       <Footer />
     </>
   );
 };
-export default Landing;
+export default About;

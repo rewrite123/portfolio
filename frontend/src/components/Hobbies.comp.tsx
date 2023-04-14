@@ -36,8 +36,9 @@ const Hobbies = () => {
                 <ListItemIcon>
                   <Box
                     sx={{
-                      width: "75px",
-                      height: "75px",
+                      width: "65px",
+                      height: "65px",
+                      padding: "10px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -61,8 +62,9 @@ const Hobbies = () => {
                 <ListItemIcon>
                   <Box
                     sx={{
-                      width: "75px",
-                      height: "75px",
+                      width: "65px",
+                      height: "65px",
+                      padding: "10px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -86,8 +88,9 @@ const Hobbies = () => {
                 <ListItemIcon>
                   <Box
                     sx={{
-                      width: "75px",
-                      height: "75px",
+                      width: "65px",
+                      height: "65px",
+                      padding: "10px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -111,8 +114,9 @@ const Hobbies = () => {
                 <ListItemIcon>
                   <Box
                     sx={{
-                      width: "75px",
-                      height: "75px",
+                      width: "65px",
+                      height: "65px",
+                      padding: "10px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -144,8 +148,9 @@ const Hobbies = () => {
                 <ListItemIcon>
                   <Box
                     sx={{
-                      width: "75px",
-                      height: "75px",
+                      width: "65px",
+                      height: "65px",
+                      padding: "10px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -169,8 +174,9 @@ const Hobbies = () => {
                 <ListItemIcon>
                   <Box
                     sx={{
-                      width: "75px",
-                      height: "75px",
+                      width: "65px",
+                      height: "65px",
+                      padding: "10px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
@@ -194,8 +200,9 @@ const Hobbies = () => {
                 <ListItemIcon>
                   <Box
                     sx={{
-                      width: "75px",
-                      height: "75px",
+                      width: "65px",
+                      height: "65px",
+                      padding: "10px",
                       display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
