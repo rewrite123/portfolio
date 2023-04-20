@@ -14,6 +14,7 @@ import webDevIllustration from "../assets/webDevIllustration.svg";
 
 const Jumbotron = () => {
   const theme = useTheme();
+  const smDownMediaQuery = useMediaQuery(theme.breakpoints.down("sm"));
   const mdDownMediaQuery = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
@@ -57,8 +58,8 @@ const Jumbotron = () => {
             Contact me
           </Button>
           <Typography>
-            Get in touch and see why clients love working with someone who can
-            take their business to the next level.
+            Find out why businesses prefer working with a professional that can
+            take their business to the next level
           </Typography>
         </Box>
       </Grid>
@@ -81,7 +82,12 @@ const Jumbotron = () => {
             alt=""
             style={{
               maxWidth: "100%",
-              maxHeight: mdDownMediaQuery ? "35vh" : "50vh",
+              maxHeight: smDownMediaQuery
+                ? "50vw"
+                : mdDownMediaQuery
+                ? "50vh"
+                : "50vh",
+              minHeight: "320px",
             }}
           />
         </Box>

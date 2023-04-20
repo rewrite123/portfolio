@@ -30,7 +30,7 @@ const BringYourIdeasToLife = () => {
         <Typography>
           Schedule a consultation and discuss the best plan of action for
           bringing your idea to the online world. Work will start immediatly
-          after we have a contract and a design. You can expect speedy dilivery
+          after we have a contract and a design. You can expect speedy delivery
           with lots of updates in between.
           {/* Schedule a consultation and discuss the best plan of action for
           bringing your idea to the online world. Once we have a contract and
