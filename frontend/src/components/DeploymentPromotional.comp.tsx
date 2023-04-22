@@ -23,7 +23,7 @@ const DeploymentPromotional = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        mt: "75px",
+        mt: "50px",
       }}
     >
       <Card

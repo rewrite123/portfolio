@@ -52,15 +52,15 @@ const Reviews = () => {
   ];
 
   return (
-    <Box sx={{ my: 5 }}>
+    <Box sx={{ my: 3 }}>
       <Typography variant="h4" sx={{ textAlign: "center" }}>
         See what customers are saying about my work
       </Typography>
       <Carousel
         autoPlay={true}
-        navButtonsAlwaysInvisible={true}
+        // navButtonsAlwaysInvisible={true}
         animation="slide"
-        indicators={false}
+        // indicators={false}
         sx={{ width: "100%" }}
       >
         {reviews.map((review, reviewIndex) => {
@@ -77,7 +77,11 @@ const Reviews = () => {
             >
               <Card
                 sx={{
-                  minHeight: "150px",
+                  minHeight: smDownMediaQuery
+                    ? "250px"
+                    : mdDownMediaQuery
+                    ? "150px"
+                    : "150px",
                   width: "90%",
                 }}
               >
