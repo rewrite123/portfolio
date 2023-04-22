@@ -29,27 +29,33 @@ const Reviews = () => {
     {
       stars: 5,
       name: "Chip",
-      review: "Awesome to work with. Very responsive.",
+      review:
+        "Awesome work on my site. I highly recomend him for all my custom coding jobs!",
     },
     {
       stars: 4,
       name: "Jada",
-      review: "Enjoyed working with him, responsive and helpful.",
+      review: "Enjoyed working with him. Responsive and helpful.",
     },
     {
       stars: 4,
       name: "Isabella",
-      review: "",
+      review:
+        "He is very organized and thoughtful throughout the process. I was satisfied with his work.",
     },
     {
       stars: 3.5,
       name: "Kris",
-      review: "Ended up doing really well on our project.",
+      review:
+        "Ended up doing really well on our project despite a rough start.",
     },
   ];
 
   return (
     <Box sx={{ my: 5 }}>
+      <Typography variant="h4" sx={{ textAlign: "center" }}>
+        See what customers are saying about my work
+      </Typography>
       <Carousel
         autoPlay={true}
         navButtonsAlwaysInvisible={true}
@@ -66,7 +72,7 @@ const Reviews = () => {
                 justifyContent: "end",
                 alignItems: "center",
                 flexDirection: "column",
-                minHeight: "200px",
+                minHeight: "180px",
               }}
             >
               <Card
@@ -81,6 +87,7 @@ const Reviews = () => {
                     name="read-only"
                     size="large"
                     value={review.stars}
+                    precision={0.5}
                     readOnly
                   />
                   <Typography variant="h6">{review.review}</Typography>

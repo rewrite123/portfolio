@@ -47,19 +47,19 @@ const Jumbotron = () => {
             justifyContent: "center",
             alignItems: "center ",
             gap: 1,
-            mt: 1,
+            mt: 2,
           }}
         >
           <Button
             variant="contained"
             href="/contact"
-            sx={{ minWidth: "150px" }}
+            sx={{ minWidth: "150px", minHeight: "60px", fontSize: "16px" }}
           >
             Contact me
           </Button>
           <Typography>
-            Find out why businesses prefer working with a professional that can
-            take their business to the next level
+            Visitors develop their opinion on a company within the first 50
+            milliseconds. Why not impress them?
           </Typography>
         </Box>
       </Grid>

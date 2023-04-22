@@ -23,6 +23,7 @@ import AllInOneDeveloper from "../components/AllInOneDeveloper.comp";
 import OnBudgetAndOnTime from "../components/OnBudgetAndOnTime.comp";
 import Reviews from "../components/Reviews.comp";
 import DesignsPromotional from "../components/DesignsPromotional.comp";
+import DeploymentPromotional from "../components/DeploymentPromotional.comp";
 import Headline from "../components/Headline.comp";
 import Footer from "../components/Footer.comp";
 
@@ -44,6 +45,7 @@ const Landing = () => {
         <OnBudgetAndOnTime />
         <Reviews />
         <DesignsPromotional />
+        <DeploymentPromotional />
         <Box sx={{ pt: 5 }}>
           <Headline />
         </Box>
