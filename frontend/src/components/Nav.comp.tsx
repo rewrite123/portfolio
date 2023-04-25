@@ -21,7 +21,7 @@ import pfp from "../assets/pfp.jpeg";
 const Nav = () => {
   const holdthis = () => (
     <SvgIcon
-      component={() => <img src={ihIcon} />}
+      component={() => <img src={ihIcon} alt="IsaacHormelIcon" />}
       sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
     />
   );

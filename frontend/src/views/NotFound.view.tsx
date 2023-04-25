@@ -13,6 +13,8 @@ import {
   ListItemIcon,
   SvgIcon,
   Paper,
+  Card,
+  CardContent,
 } from "@mui/material";
 
 import Nav from "../components/Nav.comp";
@@ -28,32 +30,29 @@ import ConsultationsPromotional from "../components/ConsultationsPromotional.com
 import Headline from "../components/Headline.comp";
 import Footer from "../components/Footer.comp";
 
-const Landing = () => {
-  // const theme = useTheme();
-  // const smUpMediaQuery = useMediaQuery(theme.breakpoints.up("sm"));
-  // const mdUpMediaQuery = useMediaQuery(theme.breakpoints.up("md"));
-  // const lgUpMediaQuery = useMediaQuery(theme.breakpoints.up("lg"));
-  // const xlUpMediaQuery = useMediaQuery(theme.breakpoints.up("xl"));
-
+const NotFound = () => {
   return (
     <>
       <Nav />
-      <Container>
-        <Jumbotron />
-        <ActionableData />
-        <BringYourIdeasToLife />
-        <AllInOneDeveloper />
-        <OnBudgetAndOnTime />
-        <Reviews />
-        <DesignsPromotional />
-        <DeploymentPromotional />
-        <ConsultationsPromotional />
-        <Box sx={{ pt: 5 }}>
-          <Headline />
-        </Box>
+      <Container sx={{ minHeight: "calc(100vh - 300px)" }}>
+        <Headline />
+        <Card>
+          <CardContent sx={{ textAlign: "center" }}>
+            <Typography variant="h1">Oops!</Typography>
+            <Typography variant="h4">Looks like you're lost</Typography>
+            <Button
+              href="/"
+              variant="contained"
+              size="large"
+              sx={{ fontSize: "22px", fontWeight: "black", mt: 3 }}
+            >
+              Go home now
+            </Button>
+          </CardContent>
+        </Card>
       </Container>
       <Footer />
     </>
   );
 };
-export default Landing;
+export default NotFound;

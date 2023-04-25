@@ -103,6 +103,7 @@ const Technologies = () => {
                     <img
                       key={imageIndex}
                       src={imageSrc}
+                      alt="BackendTechnology"
                       style={{ maxWidth: techSize, maxHeight: techSize }}
                     />
                   </Box>
@@ -139,6 +140,7 @@ const Technologies = () => {
                     <img
                       key={imageIndex}
                       src={imageSrc}
+                      alt="FrontendTechnology"
                       style={{ maxWidth: techSize, maxHeight: techSize }}
                     />
                   </Box>

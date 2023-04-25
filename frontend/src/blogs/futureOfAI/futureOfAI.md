@@ -33,7 +33,8 @@ Here is what ChatGPT thinks is the best way to write prompts for reference:
 > 6. Keep it brief: While you want to provide enough context for ChatGPT to understand your prompt, you also don't want to overload it with too much information. Try to keep your prompts brief and to the point.
 >
 > 7. Stay on topic: ChatGPT works best when you keep your prompts focused on a specific topic or question. Avoid jumping around between different topics or asking multiple questions in a single prompt, as this can confuse ChatGPT and result in less useful responses.
-*ChatGPT Mar 23 Version*
+>
+> _ChatGPT Mar 23 Version_
 
 ## Gluing prompt coding outputs together
 

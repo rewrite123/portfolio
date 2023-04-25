@@ -104,7 +104,11 @@ const Contact = () => {
                   <Box sx={{ display: "flex", mr: 1 }}>
                     <SvgIcon
                       component={() => (
-                        <img src={upwork} style={{ height: "50px" }} />
+                        <img
+                          src={upwork}
+                          alt="Upwork"
+                          style={{ height: "50px" }}
+                        />
                       )}
                     />
                   </Box>

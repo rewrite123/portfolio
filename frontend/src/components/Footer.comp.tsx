@@ -49,7 +49,9 @@ const Footer = () => {
                   alignItems: "center",
                 }}
               >
-                <SvgIcon component={() => <img src={ihIcon} />} />
+                <SvgIcon
+                  component={() => <img src={ihIcon} alt="IsaacHormelIcon" />}
+                />
                 <Typography
                   variant="h5"
                   noWrap

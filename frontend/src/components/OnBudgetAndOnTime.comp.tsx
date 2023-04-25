@@ -18,6 +18,7 @@ const OnBudgetAndOnTime = () => {
       <Grid item xs={12} md={6} sx={{ textAlign: "center", px: 2 }}>
         <img
           src={calendarInvoice}
+          alt="CalendarInvoice"
           style={{
             maxWidth: mdDownMediaQuery
               ? "55vw"

@@ -36,6 +36,7 @@ const AllInOneDeveloper = () => {
       <Grid item xs={12} md={5} sx={{ textAlign: "center" }}>
         <img
           src={clipboard}
+          alt="Clipboard"
           style={{ maxWidth: mdDownMediaQuery ? "40vw" : "25vw" }}
         />
       </Grid>

@@ -12,7 +12,7 @@ const Designs = () => {
           <Typography variant="h3" sx={{ mb: 2 }}>
             Designs with{" "}
             <span style={{ display: "inline-block" }}>
-              <img src={figmaLogo} style={{ height: "60px" }} />
+              <img src={figmaLogo} alt="FigmaLogo" style={{ height: "60px" }} />
               igma
             </span>
           </Typography>

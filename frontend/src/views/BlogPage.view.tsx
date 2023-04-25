@@ -20,7 +20,7 @@ import {
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 import Nav from "../components/Nav.comp";
 import Headline from "../components/Headline.comp";
@@ -39,7 +39,9 @@ const BlogPage = () => {
 
   return (
     <>
-      
+      <Helmet>
+        <meta name="revised" content={`Isaac Hormel, ${blog?.date}`} />
+      </Helmet>
       <Nav />
       <Container sx={{ minHeight: "calc(100vh - 300px)" }}>
         <Headline />
@@ -52,7 +54,10 @@ const BlogPage = () => {
               <title>{blog.title}</title>
               <meta property="og:title" content={blog.title} />
               <meta property="og:description" content={blog.summery} />
-              <meta property="og:image" content="/images/phoenixWingSquaredBlogs.png" />
+              <meta
+                property="og:image"
+                content="/images/phoenixWingSquaredBlogs.png"
+              />
             </Helmet>
             <Card sx={{ mt: 2, mb: 6 }}>
               <CardContent>
@@ -116,16 +121,25 @@ const BlogPage = () => {
             </Card>
           </>
         )}
-        {blog==undefined && (
+        {blog == undefined && (
           <>
             <Helmet>
               <title>Oops: Broken link</title>
               <meta property="og:title" content="No article :(" />
-              <meta property="og:description" content="Looks like the link you're trying to use is broken." />
-              <meta property="og:image" content="/images/phoenixWingSquaredBlogs.png" />
+              <meta
+                property="og:description"
+                content="Looks like the link you're trying to use is broken."
+              />
+              <meta
+                property="og:image"
+                content="/images/phoenixWingSquaredBlogs.png"
+              />
             </Helmet>
             <Typography variant="h2">Oops!</Typography>
-            <Typography variant="h5">Looks like you're lost. Try going back to find more interesting posts.</Typography>
+            <Typography variant="h5">
+              Looks like you're lost. Try going back to find more interesting
+              posts.
+            </Typography>
           </>
         )}
       </Container>

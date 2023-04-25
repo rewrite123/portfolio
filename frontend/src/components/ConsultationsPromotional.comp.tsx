@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Grid,
@@ -9,10 +10,9 @@ import {
 } from "@mui/material";
 import React from "react";
 
-import figmaLogo from "../assets/figmaLogo.svg";
-import designPenPencil from "../assets/designPenPencil.svg";
+import Conversation from "../assets/Conversation.svg";
 
-const DesignsPromotional = () => {
+const ConsultationsPromotional = () => {
   const theme = useTheme();
   const smDownMediaQuery = useMediaQuery(theme.breakpoints.down("sm"));
   const mdDownMediaQuery = useMediaQuery(theme.breakpoints.down("md"));
@@ -42,11 +42,7 @@ const DesignsPromotional = () => {
       >
         <CardContent>
           <Typography variant="h3" sx={{ textAlign: "center", mb: 2 }}>
-            Designs with{" "}
-            <span style={{ display: "inline-block" }}>
-              <img src={figmaLogo} alt="FigmaLogo" style={{ height: "60px" }} />
-              igma
-            </span>
+            Schedule a free consultation
           </Typography>
           <Grid container>
             <Grid
@@ -60,8 +56,8 @@ const DesignsPromotional = () => {
               }}
             >
               <img
-                src={designPenPencil}
-                alt="DesignPenPencil"
+                src={Conversation}
+                alt="Conversation"
                 style={{
                   maxWidth: "100%",
                   height: "260px",
@@ -76,13 +72,27 @@ const DesignsPromotional = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                flexDirection: "column",
               }}
             >
-              <Typography variant="h5">
-                Request demos, mockups and illustrations from me at your
-                leisure. Add designs to tickets to make it obvious how
-                components should look and perform.
+              <Typography variant="h5" sx={{ mt: 1 }}>
+                Let's get in touch and schedule a free consultation. Discuss
+                project scope, technologies, timelines and deliverables at no
+                cost to you.
               </Typography>
+              <Box sx={{ textAlign: "right", width: "100%" }}>
+                <Button
+                  href="mailto:caasilemroh@gmail.com?subject=I%20want%20to%20schedule%20a%20consultation%20with%20you&body=Let's%20set%20up%20a%20time%20to%20get%20in%20touch%20and%20talk%20about%your%20business%20needs."
+                  // target="_blank"
+                  // rel="noopener noreferrer"
+                  variant="contained"
+                  color="secondary"
+                  size="large"
+                  sx={{ mt: 1, fontWeight: "bold" }}
+                >
+                  Schedule now
+                </Button>
+              </Box>
             </Grid>
           </Grid>
         </CardContent>
@@ -90,4 +100,4 @@ const DesignsPromotional = () => {
     </Box>
   );
 };
-export default DesignsPromotional;
+export default ConsultationsPromotional;

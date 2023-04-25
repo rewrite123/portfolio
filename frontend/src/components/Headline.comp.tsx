@@ -35,6 +35,7 @@ const Headline = () => {
           component={() => (
             <img
               src={ihIcon}
+              alt="IsaacHormelIcon"
               style={{ height: smUpMediaQuery ? "75px" : "60px" }}
             />
           )}

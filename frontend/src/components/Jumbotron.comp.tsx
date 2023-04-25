@@ -36,8 +36,13 @@ const Jumbotron = () => {
           mt: 1,
         }}
       >
-        <Typography variant="h3">Build your online business</Typography>
-        <Typography variant="h6">
+        <Typography variant="h1" sx={{ fontSize: "3rem", fontWeight: "400" }}>
+          Build your online business
+        </Typography>
+        <Typography
+          variant="h2"
+          sx={{ fontSize: "1.25rem", fontWeight: "500" }}
+        >
           Get highly custom websites, apps, illustrations and designs from a
           professional.
         </Typography>
@@ -79,7 +84,7 @@ const Jumbotron = () => {
         >
           <img
             src={webDevIllustration}
-            alt=""
+            alt="WebDevIllustration"
             style={{
               maxWidth: "100%",
               maxHeight: smDownMediaQuery

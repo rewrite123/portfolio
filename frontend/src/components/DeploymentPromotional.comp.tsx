@@ -57,6 +57,7 @@ const DeploymentPromotional = () => {
             >
               <img
                 src={DeployCloud}
+                alt="DeployCloud"
                 style={{
                   maxWidth: "100%",
                   height: "260px",
@@ -75,8 +76,7 @@ const DeploymentPromotional = () => {
             >
               <Typography variant="h5">
                 Use professional deployment options for your website or app. I
-                am experienced in Linux, AWS, Heroku, Linode and Webflow for
-                major projects.
+                am experienced in Linux, AWS, Heroku, Linode, Webflow and more.
               </Typography>
             </Grid>
           </Grid>

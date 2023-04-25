@@ -30,9 +30,19 @@ const App = () => {
   return (
     <React.StrictMode>
       <Helmet>
-        <title>Isaac Hormel</title>
-        <meta property="og:title" content="Isaac Hormel" />
-        <meta property="og:description" content="Hi, I'm Isaac. I'm a fullstack developer specializing ing NodeJS and related MERN technologies." />
+        <title>Ideas to reality - Isaac Hormel</title>
+        <meta
+          name="description"
+          content="Build your online business and bring your ideas to life with a professional web developer. Get custom websites, apps, illustrations and designs at an affordable price and in a timely manner."
+        />
+        <meta property="og:title" content="Ideas to reality - Isaac Hormel" />
+        <meta
+          property="og:description"
+          content="Build your online business and bring your ideas to life with a professional web developer. Get custom websites, apps, illustrations and designs at an affordable price and in a timely manner."
+        />
+        <meta property="robots" content="index" />
+        <meta property="author" content="Isaac Hormel" />
+        <meta property="publisher" content="Isaac Hormel" />
         <meta property="og:image" content="/images/phoenixWingSquared.png" />
       </Helmet>
       <ThemeProvider theme={theme}>

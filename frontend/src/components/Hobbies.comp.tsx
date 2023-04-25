@@ -44,7 +44,11 @@ const Hobbies = () => {
                       alignItems: "center",
                     }}
                   >
-                    <img src={hobby1} className="ih-land-hobbies-icon" />
+                    <img
+                      src={hobby1}
+                      alt="Rust"
+                      className="ih-land-hobbies-icon"
+                    />
                   </Box>
                 </ListItemIcon>
                 <ListItemText
@@ -70,7 +74,11 @@ const Hobbies = () => {
                       alignItems: "center",
                     }}
                   >
-                    <img src={hobby2} className="ih-land-hobbies-icon" />
+                    <img
+                      src={hobby2}
+                      alt="Yew"
+                      className="ih-land-hobbies-icon"
+                    />
                   </Box>
                 </ListItemIcon>
                 <ListItemText
@@ -96,7 +104,11 @@ const Hobbies = () => {
                       alignItems: "center",
                     }}
                   >
-                    <img src={hobby3} className="ih-land-hobbies-icon" />
+                    <img
+                      src={hobby3}
+                      alt="Microcontroller"
+                      className="ih-land-hobbies-icon"
+                    />
                   </Box>
                 </ListItemIcon>
                 <ListItemText
@@ -122,7 +134,11 @@ const Hobbies = () => {
                       alignItems: "center",
                     }}
                   >
-                    <img src={hobby4} className="ih-land-hobbies-icon" />
+                    <img
+                      src={hobby4}
+                      alt="Hackerman"
+                      className="ih-land-hobbies-icon"
+                    />
                   </Box>
                 </ListItemIcon>
                 <ListItemText
@@ -156,7 +172,11 @@ const Hobbies = () => {
                       alignItems: "center",
                     }}
                   >
-                    <img src={hobby5} className="ih-land-hobbies-icon" />
+                    <img
+                      src={hobby5}
+                      alt="AI"
+                      className="ih-land-hobbies-icon"
+                    />
                   </Box>
                 </ListItemIcon>
                 <ListItemText
@@ -182,7 +202,11 @@ const Hobbies = () => {
                       alignItems: "center",
                     }}
                   >
-                    <img src={hobby6} className="ih-land-hobbies-icon" />
+                    <img
+                      src={hobby6}
+                      alt="Linux"
+                      className="ih-land-hobbies-icon"
+                    />
                   </Box>
                 </ListItemIcon>
                 <ListItemText
@@ -208,7 +232,11 @@ const Hobbies = () => {
                       alignItems: "center",
                     }}
                   >
-                    <img src={hobby7} className="ih-land-hobbies-icon" />
+                    <img
+                      src={hobby7}
+                      alt="Web3"
+                      className="ih-land-hobbies-icon"
+                    />
                   </Box>
                 </ListItemIcon>
                 <ListItemText

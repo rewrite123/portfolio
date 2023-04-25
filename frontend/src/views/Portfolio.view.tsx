@@ -55,6 +55,7 @@ const Portfolio = () => {
               >
                 <img
                   src={thrivsportsEx}
+                  alt="ThrivSports"
                   style={{
                     maxHeight: "40vh",
                     maxWidth: "100%",
@@ -117,6 +118,7 @@ const Portfolio = () => {
               >
                 <img
                   src={batrxEx}
+                  alt="BatRX"
                   style={{
                     maxHeight: "40vh",
                     maxWidth: "100%",

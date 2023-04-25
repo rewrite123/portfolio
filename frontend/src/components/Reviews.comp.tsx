@@ -54,7 +54,7 @@ const Reviews = () => {
   return (
     <Box sx={{ my: 3 }}>
       <Typography variant="h4" sx={{ textAlign: "center" }}>
-        See what customers are saying about my work
+        See what customers think of my work
       </Typography>
       <Carousel
         autoPlay={true}

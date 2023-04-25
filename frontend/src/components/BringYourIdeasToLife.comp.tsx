@@ -12,6 +12,7 @@ const BringYourIdeasToLife = () => {
       <Grid item xs={12} md={5} sx={{ textAlign: "center" }}>
         <img
           src={ideaMachine}
+          alt="IdeaMachine"
           style={{ maxWidth: mdDownMediaQuery ? "50vw" : "35vw" }}
         />
       </Grid>
