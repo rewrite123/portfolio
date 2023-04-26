@@ -1,13 +1,13 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
-import Contact from "../views/Contact.view";
-import Portfolio from "../views/Portfolio.view";
-import Landing from "../views/Landing.view";
-import Blog from "../views/Blog.view";
-import BlogPage from "../views/BlogPage.view";
-import About from "../views/About.view";
-import NotFound from "../views/NotFound.view";
+const Blog = React.lazy(() => import("../views/Blog.view"));
+const Contact = React.lazy(() => import("../views/Contact.view"));
+const Portfolio = React.lazy(() => import("../views/Portfolio.view"));
+const BlogPage = React.lazy(() => import("../views/BlogPage.view"));
+const About = React.lazy(() => import("../views/About.view"));
+const NotFound = React.lazy(() => import("../views/NotFound.view"));
+const Landing = React.lazy(() => import("../views/Landing.view"));
 
 const defaultRouter = createBrowserRouter(
   [
