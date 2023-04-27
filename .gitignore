@@ -220,3 +220,10 @@
 /email/.react-email/
 /email/.react-email/*
 /email/.react-email/**
+/email/dist/
+/email/out/
+email/.react-email/
+email/.react-email/*
+email/.react-email/**
+email/dist/
+email/out/
