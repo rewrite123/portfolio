@@ -55,9 +55,7 @@ const Nav = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
-            <SvgIcon
-              component={() => <img src={ihIcon} alt="IsaacHormelIcon" />}
-            />
+            <SvgIcon component={() => <img src={ihIcon} />} />
           </Box>
           <Typography
             variant="h6"
@@ -118,13 +116,7 @@ const Nav = () => {
 
           <Box sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}>
             <SvgIcon
-              component={() => (
-                <img
-                  src={ihIcon}
-                  alt="IsaacHormelIcon"
-                  style={{ height: "50px" }}
-                />
-              )}
+              component={() => <img src={ihIcon} style={{ height: "50px" }} />}
             />
           </Box>
           <Typography

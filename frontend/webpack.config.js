@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: __dirname + '/dist/',
-    filename: 'bundle.[chunkhash].js',
+    filename: '[name].js',
     clean: true,
   },
   module: {
@@ -54,13 +54,13 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [
-        { from: 'public', globOptions: { ignore: ['**/*.html'] } }
+        { from: 'public' }
       ]
     }),
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      inject: true
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: './public/index.html',
+    //   inject: true
+    // }),
     new MiniCssExtractPlugin(),
   ],
 };
