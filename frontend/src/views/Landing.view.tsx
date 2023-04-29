@@ -48,6 +48,7 @@ const Landing = () => {
         <DesignsPromotional />
         <DeploymentPromotional />
         <ConsultationsPromotional />
+
         <Box sx={{ pt: 5 }}>
           <Headline />
         </Box>

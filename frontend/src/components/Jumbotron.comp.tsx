@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 import webDevIllustration from "../assets/webDevIllustration.svg";
+import { PopupButton } from "react-calendly";
 
 const Jumbotron = () => {
   const theme = useTheme();
@@ -55,12 +56,47 @@ const Jumbotron = () => {
             mt: 2,
           }}
         >
-          <Button
+          {/* <Button
             variant="contained"
             href="/contact"
             sx={{ minWidth: "150px", minHeight: "60px", fontSize: "16px" }}
           >
             Contact me
+          </Button> */}
+          <Button
+            variant="contained"
+            size="large"
+            onClick={(e) => {
+              if (!e.currentTarget.className.includes("calendlyBtn")) {
+                (
+                  e.currentTarget.firstChild as HTMLButtonElement | null
+                )?.click();
+              }
+            }}
+            sx={{ minWidth: "150px", minHeight: "60px", fontSize: "16px" }}
+          >
+            <PopupButton
+              className="calendlyBtn"
+              url="https://calendly.com/isaachormel"
+              /*
+               * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+               * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
+               */
+              rootElement={
+                document.getElementById("portfolio") as HTMLDivElement
+              }
+              text="CONTACT ME"
+              styles={{
+                background: "inherit",
+                border: "none",
+                font: "inherit",
+                fontSize: "inherit",
+                color: "inherit",
+                cursor: "inherit",
+                margin: 0,
+                padding: 0,
+              }}
+            />
           </Button>
           <Typography>
             Visitors develop their opinion on a company within the first 50

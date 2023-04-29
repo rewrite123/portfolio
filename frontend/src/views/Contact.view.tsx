@@ -18,6 +18,7 @@ import {
   Modal,
 } from "@mui/material";
 
+import CalendarMonth from "@mui/icons-material/CalendarMonth";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import upwork from "../assets/upwork.svg";
@@ -26,6 +27,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import Nav from "../components/Nav.comp";
 import Headline from "../components/Headline.comp";
 import Footer from "../components/Footer.comp";
+import { PopupButton } from "react-calendly";
 
 const Contact = () => {
   const [emailOpenModal, setEmailOpenModal] = useState<boolean>(false);
@@ -56,6 +58,47 @@ const Contact = () => {
                 }}
               >
                 <Typography variant="h3">Let's get in touch</Typography>
+                <Button
+                  variant="contained"
+                  onClick={(e) => {
+                    if (!e.currentTarget.className.includes("calendlyBtn")) {
+                      (
+                        e.currentTarget.firstChild as HTMLButtonElement | null
+                      )?.click();
+                    }
+                  }}
+                  sx={{
+                    gap: "3px",
+                    width: "250px",
+                    display: "flex",
+                    flexDirection: "row-reverse",
+                    fontSize: "1.5rem",
+                  }}
+                >
+                  <PopupButton
+                    className="calendlyBtn"
+                    url="https://calendly.com/isaachormel"
+                    /*
+                     * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+                     * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
+                     */
+                    rootElement={
+                      document.getElementById("portfolio") as HTMLDivElement
+                    }
+                    text="CALENDLY"
+                    styles={{
+                      background: "inherit",
+                      border: "none",
+                      font: "inherit",
+                      fontSize: "inherit",
+                      color: "inherit",
+                      cursor: "inherit",
+                      margin: 0,
+                      padding: 0,
+                    }}
+                  />
+                  <CalendarMonth fontSize="inherit" sx={{ fontSize: "50px" }} />
+                </Button>
                 <Button
                   href="https://github.com/rewrite123"
                   target="_blank"
