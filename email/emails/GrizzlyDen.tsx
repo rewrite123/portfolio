@@ -4,6 +4,7 @@ dotenv.config();
 import React from "react";
 import { Html } from "@react-email/html";
 import { Head } from "@react-email/head";
+import { Preview } from "@react-email/preview";
 import { Font } from "@react-email/font";
 import { Container } from "@react-email/container";
 import { Heading } from "@react-email/heading";
@@ -51,7 +52,7 @@ const GrizzlyDen = () => {
   return (
     <Html style={styles.html}>
       <Head>
-        <title>My email title</title>
+        <title>Want to grow your business? Here's how!</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0"
@@ -67,6 +68,7 @@ const GrizzlyDen = () => {
           fontStyle="normal"
         />
       </Head>
+      <Preview>Want to grow your business? Here's how!</Preview>
       <Container style={styles.container}>
         <div style={styles.jumbotron}>
           <div style={styles.jumbotronGraphic}>
