@@ -253,16 +253,7 @@ const Portfolio = () => {
                     />
                   </ListItem>
                 </List>
-                <Box sx={{ textAlign: "center" }}>
-                  <Button
-                    variant="contained"
-                    color="success"
-                    href="https://www.upwork.com/freelancers/~012942aabda8889dd5"
-                    target="_blank"
-                  >
-                    Check me out on Upwork <LaunchIcon />
-                  </Button>
-                </Box>
+                
               </Box>
             </CardContent>
           </Card>

@@ -25,36 +25,40 @@ const About = () => {
         <AccordionDetails>
           <Box sx={{ pl: 3 }}>
             <Typography>
-              I am a fullstack web developer based in the Pacific North West. I
-              specialize in NodeJS and TypeScript and their related
-              technologies. I have close to four years of professional
-              programming experience on many different teams. In the past, I
-              have been a project leader, senior developer, graphic and UX
-              designer to name a few of the roles I have fulfilled. You can
-              expect quality Express APIs and functional frontends in React or
-              Angular from a trustworthy developer with a proven track record
-              like me.
+              I am a software engineer with a passion for fullstack web
+              development. I specialize in NodeJS and TypeScript, but I have
+              worked with a variety of technologies in my career. If I haven't
+              listed your tech stack under the technologies section, feel free
+              to ask me as there is a good chance I have used it in the past. I
+              have over five years of professional programming experience on
+              many different teams. In the past, I have been a project leader,
+              senior developer, graphic and UX designer to name a few of the
+              roles I have fulfilled. You can expect quality APIs and
+              exceptional frontends in React or Angular from a trustworthy
+              developer with a proven track record like me.
             </Typography>
             <br />
             <Typography>
-              I mainly do contract work, but I am also open to full-time W2
-              positions. You can send me an email or find me on Upwork via my
-              contact page. Keep in mind that most of my clients move away from
-              Upwork as they take 20% of my hourly rate or project fee. Leaving
-              Upwork allows me to charge less and make more, but I am not
-              opposed to working through Upwork if you are weary of leaving
-              their mediation services.
+              I started my career like many others in software development, by
+              hacking and modding games over 15 years ago. Of course that is a
+              slippery slope and I quickly found myself learning how to make
+              applications and websites. I have always had a passion for
+              technology and I have been lucky enough to turn that passion into
+              a career. I am always looking for new and exciting projects to
+              work on. I especially enjoy challenging work that I can learn
+              from. It's even better when I see my work impacting others in a
+              positive way.
             </Typography>
             <br />
             <Typography>
-              The best way to insure success from my experience is to have very
-              clear and explicit communication. Nobody wants to develop a
-              feature that isn't usefull. In order to avoid missunderstandings
-              and keep on track its best to at least write out feature requests
-              and bug reports. It is even better if we can get a design file or
-              screen shot to collaborate over. This way things stay below budget
-              and on time with little to no hiccups throughout the project's
-              development lifecycle.
+              In my opinion, the best way to insure success in software is to
+              have very clear and explicit communication. After all, nobody
+              wants to develop a feature that isn't usefull. In order to avoid
+              missunderstandings and keep on track, its best to at least write
+              out feature requests and bug reports. It is even better if we can
+              get a design file or screen shot to collaborate over. This way
+              things stay below budget and on time with little to no hiccups
+              throughout the project's development lifecycle.
             </Typography>
           </Box>
           <Box sx={{ display: "flex", justifyContent: "end", mt: 2 }}>

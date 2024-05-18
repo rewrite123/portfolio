@@ -131,31 +131,7 @@ const Contact = () => {
                   <LinkedInIcon fontSize="inherit" sx={{ fontSize: "50px" }} />
                   <Typography variant="h5">LinkedIn</Typography>
                 </Button>
-                <Button
-                  href="https://www.upwork.com/freelancers/~012942aabda8889dd5"
-                  target="_blank"
-                  color="success"
-                  variant="contained"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "3px",
-                    width: "250px",
-                  }}
-                >
-                  <Box sx={{ display: "flex", mr: 1 }}>
-                    <SvgIcon
-                      component={() => (
-                        <img
-                          src={upwork}
-                          alt="Upwork"
-                          style={{ height: "50px" }}
-                        />
-                      )}
-                    />
-                  </Box>
-                </Button>
+                
                 <Button
                   onClick={() => {
                     setEmailOpenModal(true);

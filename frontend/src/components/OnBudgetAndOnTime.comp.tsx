@@ -24,7 +24,7 @@ const OnBudgetAndOnTime = () => {
               ? "55vw"
               : lgDownMediaQuery
               ? "30vw"
-              : "27vw",
+              : "500px",
           }}
         />
       </Grid>

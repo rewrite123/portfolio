@@ -1,5 +1,3 @@
-# Welcome to the blog!
-
 ## A little about the site
 
 This site was created entirely with React in order to show off my portfolio and skills as a developer. Sure, I could have just used Wordpress, but that would be no fun at all.

@@ -99,8 +99,8 @@ const Jumbotron = () => {
             />
           </Button>
           <Typography>
-            Visitors develop their opinion on a company within the first 50
-            milliseconds. Why not impress them?
+            Customers develop their opinion in the first 50
+            milliseconds. Make your first impression a good one.
           </Typography>
         </Box>
       </Grid>

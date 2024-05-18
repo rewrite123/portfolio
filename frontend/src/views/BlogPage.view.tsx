@@ -62,6 +62,13 @@ const BlogPage = () => {
             <Card sx={{ mt: 2, mb: 6 }}>
               <CardContent>
                 {blog != undefined && (
+                  <>
+                    <Typography variant="h4">{blog.title}</Typography>
+                    <Typography variant="caption">{blog.date}</Typography>
+                    <hr />
+                  </>
+                )}
+                {blog != undefined && (
                   <ReactMarkdown
                     children={blog.content}
                     components={{
