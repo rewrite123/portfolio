@@ -96,14 +96,11 @@ h1, h2, h3 { letter-spacing: -.045em; }
 .case-visual { position: relative; min-height: 260px; overflow: hidden; display: grid; place-items: center; background: #242424; }
 .case-visual svg { width: min(80%, 330px); height: auto; overflow: visible; }
 .case-visual .project-scene { width: 100%; max-width: 520px; overflow: hidden; }
+.golf-animation { display: block; height: auto; }
 .scene-dark { fill: #444; }
 .scene-mid { fill: #777; }
 .scene-light { fill: #bbb; }
 .scene-line-dark { fill: none; stroke: #555; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.animate-in .mail-envelope { animation: mail-send 2.5s cubic-bezier(.2,.8,.2,1) both; }
-.animate-in .mail-check { animation: check-pop .5s 1.45s ease-out both; transform-origin: center; }
-@keyframes mail-send { 0% { transform: translate(0, -35px); opacity: .2; } 55% { opacity: 1; } 100% { transform: translate(0, 36px); opacity: 1; } }
-@keyframes check-pop { from { transform: scale(0); } to { transform: scale(1); } }
 .case-card:nth-child(even) .case-copy { order: 2; }
 .case-card:nth-child(even) .case-visual { order: 1; }
 

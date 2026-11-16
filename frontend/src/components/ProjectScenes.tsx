@@ -1,21 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 import plumber from "../assets/scenes/plumber.svg";
-import golfer from "../assets/scenes/golfer.svg";
-import { getGolfRig, getPlumberAngle, getSceneProgress, golfShoulders } from "./sceneMotion";
+import golferAnimation from "../assets/scenes/golfer.mp4";
+import golferPoster from "../assets/scenes/golfer-poster.png";
+import { getPlumberAngle, getSceneProgress, getSceneTime } from "./sceneMotion";
 
-function useSceneProgress() {
-  const ref = useRef<SVGSVGElement>(null);
+export function useSceneProgress<T extends Element = SVGSVGElement>(extended = false) {
+  const ref = useRef<T>(null);
   const [progress, setProgress] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(true);
 
   useEffect(() => {
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
     const update = () => {
       frame = 0;
+      setReducedMotion(motion.matches);
       if (motion.matches) {
         setProgress(0);
       } else if (ref.current) {
-        setProgress(getSceneProgress(ref.current.getBoundingClientRect().top, window.innerHeight));
+        setProgress(getSceneProgress(ref.current.getBoundingClientRect().top, window.innerHeight, extended));
       }
     };
     const schedule = () => {
@@ -31,9 +34,9 @@ function useSceneProgress() {
       motion.removeEventListener("change", schedule);
       cancelAnimationFrame(frame);
     };
-  }, []);
+  }, [extended]);
 
-  return { ref, progress };
+  return { ref, progress, reducedMotion };
 }
 
 export function PlumbingScene() {
@@ -53,59 +56,40 @@ export function PlumbingScene() {
 }
 
 export function GolfScene() {
-  const { ref, progress } = useSceneProgress();
-  const pose = getGolfRig(progress);
-  const arms = [
-    { name: "far", shoulder: golfShoulders.far, elbow: pose.farElbow, skin: "#909090", sleeve: "#777" },
-    { name: "near", shoulder: golfShoulders.near, elbow: pose.nearElbow, skin: "#aaa", sleeve: "#888" },
-  ];
+  const { ref, progress, reducedMotion } = useSceneProgress<HTMLVideoElement>(true);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    if (reducedMotion) ref.current?.load();
+  }, [reducedMotion]);
+
+  const seek = () => {
+    const video = ref.current;
+    if (video && video.readyState >= 2 && Number.isFinite(video.duration)) {
+      video.currentTime = getSceneTime(progress, video.duration);
+    }
+  };
+  useEffect(() => {
+    seek();
+  }, [progress, reducedMotion]);
+
   return (
-    <svg ref={ref} className="project-scene" viewBox="0 0 2048 1536" role="img" aria-labelledby="golf-title golf-desc">
-      <title id="golf-title">A golfer lines up, swings, and drives the ball</title>
-      <desc id="golf-desc">As you scroll, the golfer addresses the tee, raises the club into a backswing, strikes the ball, and follows through over their head and behind their back while the ball flies away.</desc>
-      <g transform="translate(350 150) scale(.8)">
-        <path d="M220 1325H1730" fill="none" stroke="#555" strokeWidth="8" strokeLinecap="round" />
-        <use href={`${golfer}#golfer-legs`} />
-        <g className="golfer-torso" transform={`rotate(${pose.torso} 420 680)`}>
-          <use href={`${golfer}#golfer-torso`} />
-          <g className="golfer-arms">
-            {arms.map(({ name, shoulder, elbow, skin, sleeve }) => (
-              <g key={name} data-arm={name} fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path
-                  d={`M${shoulder.x} ${shoulder.y}L${elbow.x} ${elbow.y}L${pose.hand.x} ${pose.hand.y}`}
-                  stroke={skin}
-                  strokeWidth="48"
-                />
-                <path
-                  d={`M${shoulder.x} ${shoulder.y}L${shoulder.x + (elbow.x - shoulder.x) * .55} ${shoulder.y + (elbow.y - shoulder.y) * .55}`}
-                  stroke={sleeve}
-                  strokeWidth="70"
-                />
-              </g>
-            ))}
-            <g className="golfer-wrist" transform={`translate(${pose.hand.x} ${pose.hand.y}) rotate(${pose.swing + pose.wrist}) translate(-645 -885)`}>
-              <use href={`${golfer}#golfer-club`} />
-            </g>
-            <circle cx={pose.hand.x} cy={pose.hand.y} r="23" fill="#aaa" />
-          </g>
-        </g>
-        <use href={`${golfer}#golfer-tee`} />
-        <path
-          className="golf-trail"
-          d="M1012 1282Q1482 582 1952 382"
-          fill="none"
-          stroke="#777"
-          strokeWidth="5"
-          strokeLinecap="round"
-          pathLength="1"
-          strokeDasharray="1"
-          strokeDashoffset={1 - pose.flight}
-          opacity={pose.flight > 0 ? 1 : 0}
-        />
-        <g className="golf-flight" transform={`translate(${pose.ballX} ${pose.ballY})`}>
-          <use href={`${golfer}#golfer-ball`} />
-        </g>
-      </g>
-    </svg>
+    <>
+      <video
+        ref={ref}
+        className="project-scene golf-animation"
+        src={reducedMotion ? undefined : golferAnimation}
+        poster={golferPoster}
+        aria-label="A golfer lines up a tee shot, swings overhead, and follows through as the ball takes off. Scroll down to advance and up to reverse."
+        width={640}
+        height={480}
+        muted
+        playsInline
+        preload="auto"
+        onLoadedData={seek}
+        onError={() => setFailed(true)}
+      />
+      {failed && <p role="alert">The golf animation could not load. Please refresh to try again.</p>}
+    </>
   );
 }

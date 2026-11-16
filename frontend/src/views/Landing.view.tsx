@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import TechnologyExplorer from "../components/TechnologyExplorer";
-import { GolfScene, PlumbingScene } from "../components/ProjectScenes";
+import { GolfScene, PlumbingScene, useSceneProgress } from "../components/ProjectScenes";
 
 const domains = [
   ["01", "AI & automation", "Practical AI features and automations that solve real workflow problems."],
@@ -39,18 +39,20 @@ function useReveal() {
 }
 
 function MailScene() {
+  const { ref, progress, reducedMotion } = useSceneProgress();
+  const position = reducedMotion ? 1 : progress;
   return (
-    <svg viewBox="0 0 360 260" role="img" aria-labelledby="mail-title mail-desc">
+    <svg ref={ref} viewBox="0 0 360 260" role="img" aria-labelledby="mail-title mail-desc">
       <title id="mail-title">An email reaches the inbox</title>
       <desc id="mail-desc">A message moves into a digital inbox, representing Haiyou's marketing and sales software.</desc>
       <rect className="scene-dark" x="62" y="83" width="236" height="122" rx="8" />
-      <g className="mail-envelope">
+      <g className="mail-envelope" transform={`translate(0 ${-35 + 71 * position})`}>
         <rect className="scene-light" x="126" y="59" width="108" height="69" rx="5" />
         <path className="scene-line-dark" d="m129 66 51 35 51-35" />
       </g>
       <path className="scene-mid" d="M62 145h72l14 20h64l14-20h72v52a8 8 0 0 1-8 8H70a8 8 0 0 1-8-8z" />
       <circle className="scene-light" cx="273" cy="78" r="16" />
-      <path className="scene-line-dark mail-check" d="m266 78 5 5 9-10" />
+      <path className="scene-line-dark mail-check" d="m266 78 5 5 9-10" opacity={Math.max(0, (position - .65) / .35)} />
     </svg>
   );
 }
