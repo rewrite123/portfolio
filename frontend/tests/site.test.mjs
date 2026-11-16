@@ -92,3 +92,35 @@ test("the production build serves the SPA and prerendered SEO article routes", a
   const files = await readdir(dist);
   assert.ok(files.includes("assets"));
 });
+
+test("the site and static articles use matching, available favicon assets", async () => {
+  const index = await readFile(path.join(dist, "index.html"), "utf8");
+  assert.match(index, /rel="icon" type="image\/svg\+xml" href="\/images\/favicon.svg"/);
+  const svg = await readFile(path.join(dist, "images/favicon.svg"), "utf8");
+  assert.match(svg, /#111311/);
+  assert.match(svg, /#b7ff3c/);
+  for (const [file, size] of [
+    ["favicon-16x16.png", 16], ["favicon-32x32.png", 32],
+    ["apple-touch-icon.png", 180], ["android-chrome-192x192.png", 192],
+    ["android-chrome-512x512.png", 512],
+  ]) {
+    const png = await readFile(path.join(dist, "images", file));
+    assert.equal(png.subarray(1, 4).toString(), "PNG");
+    assert.equal(png.readUInt32BE(16), size);
+    assert.equal(png.readUInt32BE(20), size);
+    const response = await fetch(`${origin}/images/${file}?v=2`);
+    assert.equal(response.status, 200);
+  }
+  const ico = await readFile(path.join(dist, "images/favicon.ico"));
+  assert.equal(ico.readUInt16LE(2), 1);
+  assert.equal(ico.readUInt16LE(4), 3);
+  const manifest = JSON.parse(await readFile(path.join(dist, "site.webmanifest"), "utf8"));
+  for (const icon of manifest.icons) {
+    assert.equal((await fetch(`${origin}${icon.src}`)).status, 200);
+  }
+  const articles = JSON.parse(await readFile(path.join(root, "src/generated/blogs.json"), "utf8"));
+  for (const article of articles) {
+    const html = await readFile(path.join(dist, "blog", article.id, "index.html"), "utf8");
+    assert.match(html, /href="\/images\/favicon.svg"/);
+  }
+});
