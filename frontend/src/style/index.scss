@@ -142,7 +142,7 @@ h1, h2, h3 { letter-spacing: -.045em; }
 .page-hero p:last-child { max-width: 680px; color: var(--muted); font-size: 1.1rem; line-height: 1.75; }
 .story-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 2rem; }
 .story-aside { align-self: start; position: sticky; top: 110px; }
-.story-aside img { display: block; width: min(100%, 300px); border: 1px solid var(--line); filter: grayscale(.15); }
+.story-aside img { display: block; width: min(100%, 300px); height: auto; border: 1px solid var(--line); filter: grayscale(.15); }
 .story-copy p { color: #c5ccc2; line-height: 1.85; }
 .story-copy h2 { margin-top: 2.5rem; font-size: 1.6rem; }
 .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
