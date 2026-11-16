@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import TechnologyExplorer from "../components/TechnologyExplorer";
+import { GolfScene, PlumbingScene } from "../components/ProjectScenes";
 
 const domains = [
   ["01", "AI & automation", "Practical AI features and automations that solve real workflow problems."],
@@ -50,40 +51,6 @@ function MailScene() {
       <path className="scene-mid" d="M62 145h72l14 20h64l14-20h72v52a8 8 0 0 1-8 8H70a8 8 0 0 1-8-8z" />
       <circle className="scene-light" cx="273" cy="78" r="16" />
       <path className="scene-line-dark mail-check" d="m266 78 5 5 9-10" />
-    </svg>
-  );
-}
-
-function PlumbingScene() {
-  return (
-    <svg viewBox="0 0 360 260" role="img" aria-labelledby="plumb-title plumb-desc">
-      <title id="plumb-title">A plumber repairs a pipe beneath a sink</title>
-      <desc id="plumb-desc">A simple illustrated wrench turns a joint below a sink, representing custom plumbing operations software.</desc>
-      <rect className="scene-mid" x="68" y="48" width="224" height="16" rx="3" />
-      <path className="scene-light" d="M90 64h180v20a48 48 0 0 1-48 48h-84a48 48 0 0 1-48-48z" />
-      <path className="scene-pipe" d="M156 126v18a24 24 0 0 0 48 0v-18" />
-      <rect className="scene-mid" x="64" y="211" width="232" height="8" rx="4" />
-      <circle className="scene-light" cx="265" cy="145" r="12" />
-      <path className="scene-person" d="m258 160-17 25 27 24m-27-24-25-3m52 27 20 6m-36-48-21 12-24-5" />
-      <g className="wrench">
-        <path className="scene-light" d="m177 160-47 48a10 10 0 0 1-14-14l47-48a21 21 0 0 1 29-25l-12 12 12 12 12-12a21 21 0 0 1-27 27z" />
-      </g>
-    </svg>
-  );
-}
-
-function GolfScene() {
-  return (
-    <svg viewBox="0 0 360 260" role="img" aria-labelledby="golf-title golf-desc">
-      <title id="golf-title">A golfer swings toward the green</title>
-      <desc id="golf-desc">A golfer follows through on a swing as the ball arcs forward, representing sports software projects.</desc>
-      <path className="scene-dark" d="M42 210c75-28 182-28 276 0v15H42z" />
-      <circle className="scene-light golf-ball" cx="180" cy="202" r="6" />
-      <circle className="scene-light" cx="151" cy="84" r="14" />
-      <path className="scene-person" d="m151 101-5 47-27 39m27-39 31 39m-30-65-29 28m29-28 24-17" />
-      <g className="golfer-club">
-        <path className="scene-club" d="m171 105 53 89h12" />
-      </g>
     </svg>
   );
 }

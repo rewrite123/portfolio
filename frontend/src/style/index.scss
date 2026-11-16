@@ -95,23 +95,15 @@ h1, h2, h3 { letter-spacing: -.045em; }
 .case-tags span { padding: .42rem .6rem; border: 1px solid var(--line); color: #c7cdc4; font: .65rem var(--mono); }
 .case-visual { position: relative; min-height: 260px; overflow: hidden; display: grid; place-items: center; background: #242424; }
 .case-visual svg { width: min(80%, 330px); height: auto; overflow: visible; }
+.case-visual .project-scene { width: 100%; max-width: 520px; overflow: hidden; }
 .scene-dark { fill: #444; }
 .scene-mid { fill: #777; }
 .scene-light { fill: #bbb; }
 .scene-line-dark { fill: none; stroke: #555; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.scene-pipe { fill: none; stroke: #777; stroke-width: 12; }
-.scene-person { fill: none; stroke: #aaa; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
-.scene-club { fill: none; stroke: #ddd; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
 .animate-in .mail-envelope { animation: mail-send 2.5s cubic-bezier(.2,.8,.2,1) both; }
 .animate-in .mail-check { animation: check-pop .5s 1.45s ease-out both; transform-origin: center; }
-.animate-in .wrench { animation: wrench-turn 1.8s .25s ease-in-out both; transform-origin: 177px 161px; }
-.animate-in .golfer-club { animation: swing 1.25s .3s ease-in-out both; transform-origin: 151px 124px; }
-.animate-in .golf-ball { animation: ball-flight 1.5s .95s ease-out both; }
 @keyframes mail-send { 0% { transform: translate(0, -35px); opacity: .2; } 55% { opacity: 1; } 100% { transform: translate(0, 36px); opacity: 1; } }
 @keyframes check-pop { from { transform: scale(0); } to { transform: scale(1); } }
-@keyframes wrench-turn { 0% { transform: rotate(-24deg); } 50% { transform: rotate(20deg); } 100% { transform: rotate(-5deg); } }
-@keyframes swing { 0% { transform: rotate(-36deg); } 55% { transform: rotate(54deg); } 100% { transform: rotate(24deg); } }
-@keyframes ball-flight { 0% { transform: translate(0, 0); opacity: 1; } 100% { transform: translate(94px, -62px); opacity: .15; } }
 .case-card:nth-child(even) .case-copy { order: 2; }
 .case-card:nth-child(even) .case-visual { order: 1; }
 
