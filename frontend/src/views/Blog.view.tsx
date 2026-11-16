@@ -1,54 +1,41 @@
-import React from "react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import articles from "../generated/blogs.json";
 
-import {
-  Container,
-  Grid,
-  Box,
-  Typography,
-  useTheme,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  SvgIcon,
-  Paper,
-  Card,
-  CardContent,
-} from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
+type Article = (typeof articles)[number];
 
-import Nav from "../components/Nav.comp";
-import Headline from "../components/Headline.comp";
-import Footer from "../components/Footer.comp";
-
-import blogs from "../blogs";
-
-const Blog = () => {
+export default function Blog() {
+  const sortedArticles = [...articles].sort((a: Article, b: Article) => b.date.localeCompare(a.date));
   return (
     <>
-      <Nav />
-      <Container sx={{ minHeight: "calc(100vh - 300px)" }}>
-        <Headline />
-        {blogs.map((blog, blogIndex) => {
-          return (
-            <Card key={blogIndex} sx={{ width: "100%", mb: 2 }}>
-              <CardContent>
-                <Typography variant="h4">{blog.title}</Typography>
-                <Typography variant="overline">{blog.date}</Typography>
-                <Typography>{blog.summery}</Typography>
-                <Box sx={{ textAlign: "right" }}>
-                  <Button href={`/blog/${blog.id}`} size="large">
-                    Read more
-                  </Button>
-                </Box>
-              </CardContent>
-            </Card>
-          );
-        })}
-      </Container>
-      <Footer />
+      <Helmet>
+        <title>Journal — Isaac Hormel</title>
+        <meta name="description" content="Notes on software engineering, building useful products, and the technology behind them." />
+        <link rel="canonical" href="https://isaachormel.com/blog" />
+      </Helmet>
+      <section className="page-hero">
+        <div className="page-wrap">
+          <p className="eyebrow">THE JOURNAL</p>
+          <h1>Ideas, notes, and <span>things I’m learning.</span></h1>
+          <p>Writing about software, product thinking, and the practical details of getting good ideas into the world.</p>
+        </div>
+      </section>
+      <section className="section page-wrap">
+        {sortedArticles.length > 0 ? (
+          <div className="blog-list">
+            {sortedArticles.map((article) => (
+              <Link className="blog-card" to={`/blog/${article.id}`} key={article.id}>
+                <span className="blog-date">{article.date}</span>
+                <h2>{article.title}</h2>
+                <p>{article.description}</p>
+                <span className="text-link">Read article ↗</span>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="content-card" style={{ padding: "2rem" }}>New writing is on the way.</p>
+        )}
+      </section>
     </>
   );
-};
-export default Blog;
+}

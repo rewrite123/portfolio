@@ -1,18 +1,28 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "jsx": "react",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
     "strict": true,
-    "sourceMap": true,
-    "target": "esnext",
+    "noFallthroughCasesInSwitch": true
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "include": [
+    "src/App.tsx",
+    "src/index.tsx",
+    "src/components/SiteChrome.tsx",
+    "src/components/TechnologyExplorer.tsx",
+    "src/views/**/*.tsx",
+    "src/generated/**/*.json",
+    "src/declaration.d.ts"
+  ],
+  "exclude": ["node_modules", "dist", "src/blogs", "src/components/*.comp.tsx"]
 }

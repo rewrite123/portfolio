@@ -1,93 +1,64 @@
-import React from "react";
+import { Helmet } from "react-helmet-async";
+import type { ReactNode } from "react";
+import portrait from "../assets/pfp.jpeg";
 
-import {
-  Container,
-  Grid,
-  Box,
-  Typography,
-  useTheme,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  SvgIcon,
-  Paper,
-} from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { ParallaxBanner } from "react-scroll-parallax";
-import Tilt from "react-parallax-tilt";
+const hobbies: { title: string; detail: ReactNode }[] = [
+  { title: "Rust & Yew", detail: "Exploring systems programming and building small web projects with Rust and WebAssembly." },
+  { title: "Microcontrollers", detail: "Tinkering with ESP32 boards, sensors, and the little bits of software that meet the physical world." },
+  { title: "Cybersecurity", detail: <>Curious about how systems fail—and, of course, <a href="https://www.youtube.com/watch?v=qz5i171h_no" target="_blank" rel="noreferrer">who is notorious hackerman 4chan?</a></> },
+  { title: "AI & machine learning", detail: "Following new tools closely and looking for practical, responsible ways to make them useful." },
+  { title: "Linux", detail: "At home in the terminal. Ubuntu has been a longtime favorite." },
+  { title: "Decentralized tech", detail: "Keeping an eye on open protocols and ideas that give people more ownership of their tools." },
+];
 
-import LandingJumboBackground from "../assets/landingJumbo.jpg";
-
-import back1 from "../assets/ubuntuLogo.png";
-import back2 from "../assets/githubLogo.png";
-import back3 from "../assets/awsLogo.png";
-import back4 from "../assets/herokuLogo.svg";
-import back5 from "../assets/nodeLogo.png";
-import back6 from "../assets/dockerLogo.webp";
-import back7 from "../assets/expressLogo.png";
-import back8 from "../assets/mysqlLogo.png";
-import back9 from "../assets/postgresLogo.png";
-import back10 from "../assets/elasticsearchLogo.svg";
-
-import front1 from "../assets/jsLogo.png";
-import front2 from "../assets/tsLogo.png";
-import front3 from "../assets/reactLogo.png";
-import front4 from "../assets/webpackLogo.png";
-import front5 from "../assets/materialuiLogo.svg";
-import front6 from "../assets/bootstrapLogo.svg";
-import front7 from "../assets/gmapsLogo.png";
-import front8 from "../assets/html5Logo.svg";
-import front9 from "../assets/cssLogo.png";
-import front10 from "../assets/sassLogo.png";
-import front11 from "../assets/eslintLogo.svg";
-
-import figmaLogo from "../assets/figmaLogo.svg";
-
-import designBackground from "../assets/designBackground.jpg";
-
-import hobbiesBackground from "../assets/hobbiesBackground.jpg";
-
-import hobby1 from "../assets/rustLogo.svg";
-import hobby2 from "../assets/yewLogo.png";
-import hobby3 from "../assets/microcontrollerHobby.png";
-import hobby4 from "../assets/cybersecurityHobby.png";
-import hobby5 from "../assets/aiHobby.png";
-import hobby6 from "../assets/linuxHobby.png";
-import hobby7 from "../assets/decentralizedHobby.webp";
-
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-
-import Nav from "../components/Nav.comp";
-import Headline from "../components/Headline.comp";
-import Jumbotron from "../components/Jumbotron.comp";
-import AboutMeSummery from "../components/AboutMeSummery.comp";
-import Technologies from "../components/Technologies.comp";
-import Designs from "../components/Designs.comp";
-import Hobbies from "../components/Hobbies.comp";
-import Footer from "../components/Footer.comp";
-
-const About = () => {
-  const theme = useTheme();
-  const smUpMediaQuery = useMediaQuery(theme.breakpoints.up("sm"));
-  const mdUpMediaQuery = useMediaQuery(theme.breakpoints.up("md"));
-  const lgUpMediaQuery = useMediaQuery(theme.breakpoints.up("lg"));
-  const xlUpMediaQuery = useMediaQuery(theme.breakpoints.up("xl"));
-
+export default function About() {
   return (
     <>
-      <Nav />
-      <Container>
-        <Headline />
-        <AboutMeSummery />
-        <Technologies />
-        <Designs />
-        <Hobbies />
-      </Container>
-      <Footer />
+      <Helmet>
+        <title>About Isaac Hormel — From game modding to building software</title>
+        <meta name="description" content="From hacking games to building useful software: meet independent software engineer Isaac Hormel." />
+        <link rel="canonical" href="https://isaachormel.com/about" />
+      </Helmet>
+      <section className="page-hero">
+        <div className="page-wrap">
+          <p className="eyebrow">ABOUT ISAAC</p>
+          <h1>From hacking games to building things that <span>matter.</span></h1>
+          <p>See how stubborn curiosity became a career in turning difficult problems into software people can rely on.</p>
+        </div>
+      </section>
+      <section className="section page-wrap">
+        <div className="story-grid">
+          <aside className="story-aside">
+            <img src={portrait} alt="Portrait of Isaac Hormel" width={800} height={800} loading="lazy" />
+            <p className="eyebrow" style={{ marginTop: "1rem" }}>ENGINEER · BUILDER · LIFELONG LEARNER</p>
+          </aside>
+          <article className="story-copy">
+            <p className="eyebrow">THE SHORT VERSION</p>
+            <h2 className="page-title">I like making things work better.</h2>
+            <p>I’m a full-stack software engineer who enjoys connecting the dots between a business problem and a useful product. I’ve worked on APIs, customer-facing apps, internal tools, data-heavy workflows, and the infrastructure that keeps them running.</p>
+            <p>My path into software started with game modding more than fifteen years ago. I was the kid who wanted to know how the game worked, then wanted to change it, then wanted to build something of my own. That stubborn curiosity became a habit: take things apart, understand the problem, and keep working until the solution feels right.</p>
+            <p>Over the years, I’ve taken on work as a project lead, senior developer, consultant, and designer. The titles changed; the part I enjoy most stayed the same—working with people to shape a real need into software that makes their day easier.</p>
+            <h2>Good software starts with listening.</h2>
+            <p>I believe the best outcomes come from clear communication, realistic milestones, and honest trade-offs. Before writing code, I want to understand who the software is for and what success looks like. From there, I can help plan a sensible first version, build it, and keep improving it as the business grows.</p>
+            <p>That means no mystery process and no technology for technology’s sake. Just thoughtful engineering, practical collaboration, and a product you can feel confident putting to work.</p>
+          </article>
+        </div>
+      </section>
+      <section className="section page-wrap">
+        <div className="section-heading">
+          <p className="eyebrow">OFF THE CLOCK</p>
+          <h2>A few things I’m curious about.</h2>
+          <p>Side interests keep me learning and often lead to useful new ways of thinking about software.</p>
+        </div>
+        <div className="hobby-grid">
+          {hobbies.map((hobby) => (
+            <article className="hobby-card" key={hobby.title}>
+              <h3>{hobby.title}</h3>
+              <p>{hobby.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </>
   );
-};
-export default About;
+}

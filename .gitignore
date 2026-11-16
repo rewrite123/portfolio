@@ -85,6 +85,7 @@
 # Nuxt.js build / generate output
 /frontend/.nuxt
 /frontend/dist
+/frontend/src/generated/blogs.json
 
 # Gatsby files
 /frontend/.cache/

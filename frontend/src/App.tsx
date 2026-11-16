@@ -1,56 +1,57 @@
-import React from "react";
+import { lazy, Suspense } from "react";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { HelmetProvider } from "react-helmet-async";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import SiteLayout from "./components/SiteChrome";
 
-import "./style/index.scss";
+const Landing = lazy(() => import("./views/Landing.view"));
+const About = lazy(() => import("./views/About.view"));
+const Portfolio = lazy(() => import("./views/Portfolio.view"));
+const Contact = lazy(() => import("./views/Contact.view"));
+const Philosophy = lazy(() => import("./views/Philosophy.view"));
+const Blog = lazy(() => import("./views/Blog.view"));
+const BlogPage = lazy(() => import("./views/BlogPage.view"));
+const NotFound = lazy(() => import("./views/NotFound.view"));
 
-import { ParallaxProvider } from "react-scroll-parallax";
-import { RouterProvider } from "react-router-dom";
-import defaultRouter from "./routers/defaultRouter.router";
-import { createTheme, ThemeProvider } from "@mui/material";
-import { red } from "@mui/material/colors";
-import { Helmet } from "react-helmet";
+const router = createBrowserRouter([
+  {
+    element: <SiteLayout />,
+    children: [
+      { path: "/", element: <Landing /> },
+      { path: "/about", element: <About /> },
+      { path: "/portfolio", element: <Portfolio /> },
+      { path: "/contact", element: <Contact /> },
+      { path: "/philosophy", element: <Philosophy /> },
+      { path: "/blog", element: <Blog /> },
+      { path: "/blog/:blogId", element: <BlogPage /> },
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+]);
 
-const App = () => {
-  const theme = createTheme({
-    palette: {
-      secondary: {
-        main: red[700],
-      },
-    },
-    components: {
-      MuiPopover: {
-        styleOverrides: {
-          root: {
-            maxWidth: "80vw",
-          },
-        },
-      },
-    },
-  });
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: { main: "#b7ff3c" },
+    secondary: { main: "#ffd84d" },
+    background: { default: "#111311", paper: "#1b1e1b" },
+    text: { primary: "#f0f3ed", secondary: "#a7aea5" },
+  },
+  typography: {
+    fontFamily: '"Space Grotesk", sans-serif',
+    button: { textTransform: "none", fontWeight: 600 },
+  },
+});
 
+export default function App() {
   return (
-    <React.StrictMode>
-      <Helmet>
-        <title>Ideas to reality - Isaac Hormel</title>
-        <meta
-          name="description"
-          content="Build your online business and bring your ideas to life with a professional web developer. Get custom websites, apps, illustrations and designs at an affordable price and in a timely manner."
-        />
-        <meta property="og:title" content="Ideas to reality - Isaac Hormel" />
-        <meta
-          property="og:description"
-          content="Build your online business and bring your ideas to life with a professional web developer. Get custom websites, apps, illustrations and designs at an affordable price and in a timely manner."
-        />
-        <meta property="robots" content="index" />
-        <meta property="author" content="Isaac Hormel" />
-        <meta property="publisher" content="Isaac Hormel" />
-        <meta property="og:image" content="/images/phoenixWingSquared.png" />
-      </Helmet>
-      <ThemeProvider theme={theme}>
-        <ParallaxProvider>
-          <RouterProvider router={defaultRouter} />
-        </ParallaxProvider>
-      </ThemeProvider>
-    </React.StrictMode>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <HelmetProvider>
+        <Suspense fallback={<div className="route-loading" aria-label="Loading page" />}>
+          <RouterProvider router={router} />
+        </Suspense>
+      </HelmetProvider>
+    </ThemeProvider>
   );
-};
-export default App;
+}

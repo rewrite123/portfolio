@@ -1,157 +1,52 @@
-import React from "react";
-
-import {
-  Container,
-  Grid,
-  Box,
-  Typography,
-  useTheme,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  SvgIcon,
-  Paper,
-  Card,
-  CardContent,
-  Link,
-} from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { Helmet } from "react-helmet-async";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Helmet } from "react-helmet";
+import { Link, useParams } from "react-router-dom";
+import articles from "../generated/blogs.json";
 
-import Nav from "../components/Nav.comp";
-import Headline from "../components/Headline.comp";
-import Footer from "../components/Footer.comp";
-
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-
-import blogs from "../blogs";
-import { useParams } from "react-router-dom";
-
-const BlogPage = () => {
+export default function BlogPage() {
   const { blogId } = useParams();
-  const blog = blogs.find((b) => {
-    return b.id == blogId;
-  });
+  const article = articles.find((item) => item.id === blogId);
+
+  if (!article) {
+    return (
+      <>
+        <Helmet>
+          <title>Article not found — Isaac Hormel</title>
+          <meta name="robots" content="noindex" />
+        </Helmet>
+        <section className="not-found page-wrap">
+          <p className="eyebrow">404 · ARTICLE NOT FOUND</p>
+          <h1>That page isn’t here.</h1>
+          <Link className="button" to="/blog">Back to the journal</Link>
+        </section>
+      </>
+    );
+  }
 
   return (
     <>
       <Helmet>
-        <meta name="revised" content={`Isaac Hormel, ${blog?.date}`} />
+        <title>{article.title} — Isaac Hormel</title>
+        <meta name="description" content={article.description} />
+        <link rel="canonical" href={`https://isaachormel.com/blog/${article.id}/`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.description} />
+        <meta property="og:url" content={`https://isaachormel.com/blog/${article.id}/`} />
+        <meta property="og:image" content="https://isaachormel.com/images/phoenixWingSquaredBlogs.png" />
+        <meta property="article:published_time" content={article.date} />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
-      <Nav />
-      <Container sx={{ minHeight: "calc(100vh - 300px)" }}>
-        <Headline />
-        <Button href="/blog" size="large">
-          <ArrowBackIosIcon /> Back
-        </Button>
-        {blog && (
-          <>
-            <Helmet>
-              <title>{blog.title}</title>
-              <meta property="og:title" content={blog.title} />
-              <meta property="og:description" content={blog.summery} />
-              <meta
-                property="og:image"
-                content="/images/phoenixWingSquaredBlogs.png"
-              />
-            </Helmet>
-            <Card sx={{ mt: 2, mb: 6 }}>
-              <CardContent>
-                {blog != undefined && (
-                  <>
-                    <Typography variant="h4">{blog.title}</Typography>
-                    <Typography variant="caption">{blog.date}</Typography>
-                    <hr />
-                  </>
-                )}
-                {blog != undefined && (
-                  <ReactMarkdown
-                    children={blog.content}
-                    components={{
-                      h1: ({ node, ...props }) => (
-                        <Typography variant="h4" sx={{ my: 2 }}>
-                          <span {...props}></span>
-                        </Typography>
-                      ),
-                      h2: ({ node, ...props }) => (
-                        <Typography variant="h5">
-                          <span {...props}></span>
-                        </Typography>
-                      ),
-                      h3: ({ node, ...props }) => (
-                        <Typography variant="h6">
-                          <span {...props}></span>
-                        </Typography>
-                      ),
-                      p: ({ node, ...props }) => (
-                        <Typography sx={{ my: 2 }}>
-                          <span {...props}></span>
-                        </Typography>
-                      ),
-                      blockquote: ({ node, ...props }) => (
-                        <Box
-                          sx={{
-                            background: "#1976d222",
-                            pl: "10px",
-                            fontFamily: "Times New Roman",
-                          }}
-                        >
-                          <span {...props}></span>
-                        </Box>
-                      ),
-                      code: ({ node, ...props }) => (
-                        <Typography
-                          sx={{
-                            background: "#1976d222",
-                            px: "2px",
-                            display: "inline",
-                            fontWeight: "500",
-                          }}
-                        >
-                          <span {...props}></span>
-                        </Typography>
-                      ),
-                      a: ({ node, ...props }) => (
-                        <Link href={props.href} target="_blank">
-                          <span {...props}></span>
-                        </Link>
-                      ),
-                    }}
-                    remarkPlugins={[remarkGfm]}
-                  />
-                )}
-              </CardContent>
-            </Card>
-          </>
-        )}
-        {blog == undefined && (
-          <>
-            <Helmet>
-              <title>Oops: Broken link</title>
-              <meta property="og:title" content="No article :(" />
-              <meta
-                property="og:description"
-                content="Looks like the link you're trying to use is broken."
-              />
-              <meta
-                property="og:image"
-                content="/images/phoenixWingSquaredBlogs.png"
-              />
-            </Helmet>
-            <Typography variant="h2">Oops!</Typography>
-            <Typography variant="h5">
-              Looks like you're lost. Try going back to find more interesting
-              posts.
-            </Typography>
-          </>
-        )}
-      </Container>
-      <Footer />
+      <article className="article page-wrap">
+        <Link className="text-link" to="/blog">← Journal</Link>
+        <p className="blog-date" style={{ marginTop: "2rem" }}>{article.date}</p>
+        <h1>{article.title}</h1>
+        <p className="article-summary">{article.description}</p>
+        <div className="markdown-body">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{article.content}</ReactMarkdown>
+        </div>
+      </article>
     </>
   );
-};
-export default BlogPage;
+}

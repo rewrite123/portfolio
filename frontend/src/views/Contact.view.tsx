@@ -1,197 +1,44 @@
-import React, { useState } from "react";
-
-import {
-  Container,
-  Grid,
-  Box,
-  Typography,
-  useTheme,
-  Button,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  SvgIcon,
-  Paper,
-  CardContent,
-  Card,
-  Modal,
-} from "@mui/material";
-
-import CalendarMonth from "@mui/icons-material/CalendarMonth";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import upwork from "../assets/upwork.svg";
-import EmailIcon from "@mui/icons-material/Email";
-
-import Nav from "../components/Nav.comp";
-import Headline from "../components/Headline.comp";
-import Footer from "../components/Footer.comp";
+import { Helmet } from "react-helmet-async";
 import { PopupButton } from "react-calendly";
 
-const Contact = () => {
-  const [emailOpenModal, setEmailOpenModal] = useState<boolean>(false);
-
+export default function Contact() {
   return (
     <>
-      <Nav />
-      <Container sx={{ minHeight: "calc(100vh - 300px)" }}>
-        <Headline />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "30px",
-            my: 3,
-          }}
-        >
-          <Card sx={{ width: "100%" }}>
-            <CardContent>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  flexDirection: "column",
-                  gap: 2,
-                }}
-              >
-                <Typography variant="h3">Let's get in touch</Typography>
-                <Button
-                  variant="contained"
-                  onClick={(e) => {
-                    if (!e.currentTarget.className.includes("calendlyBtn")) {
-                      (
-                        e.currentTarget.firstChild as HTMLButtonElement | null
-                      )?.click();
-                    }
-                  }}
-                  sx={{
-                    gap: "3px",
-                    width: "250px",
-                    display: "flex",
-                    flexDirection: "row-reverse",
-                    fontSize: "1.5rem",
-                  }}
-                >
-                  <PopupButton
-                    className="calendlyBtn"
-                    url="https://calendly.com/isaachormel"
-                    /*
-                     * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
-                     * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
-                     */
-                    rootElement={
-                      document.getElementById("portfolio") as HTMLDivElement
-                    }
-                    text="CALENDLY"
-                    styles={{
-                      background: "inherit",
-                      border: "none",
-                      font: "inherit",
-                      fontSize: "inherit",
-                      color: "inherit",
-                      cursor: "inherit",
-                      margin: 0,
-                      padding: 0,
-                    }}
-                  />
-                  <CalendarMonth fontSize="inherit" sx={{ fontSize: "50px" }} />
-                </Button>
-                <Button
-                  href="https://github.com/rewrite123"
-                  target="_blank"
-                  variant="contained"
-                  color="inherit"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "3px",
-                    width: "250px",
-                    color: "black",
-                  }}
-                >
-                  <GitHubIcon fontSize="inherit" sx={{ fontSize: "50px" }} />
-                  <Typography variant="h5">Github</Typography>
-                </Button>
-                <Button
-                  href="https://www.linkedin.com/in/isaac-hormel/"
-                  target="_blank"
-                  variant="contained"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "3px",
-                    width: "250px",
-                  }}
-                >
-                  <LinkedInIcon fontSize="inherit" sx={{ fontSize: "50px" }} />
-                  <Typography variant="h5">LinkedIn</Typography>
-                </Button>
-                
-                <Button
-                  onClick={() => {
-                    setEmailOpenModal(true);
-                  }}
-                  color="secondary"
-                  variant="contained"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    gap: "3px",
-                    width: "250px",
-                  }}
-                >
-                  <EmailIcon fontSize="inherit" sx={{ fontSize: "50px" }} />
-                  <Typography variant="h5">Email</Typography>
-                </Button>
-                <Modal
-                  open={emailOpenModal}
-                  onClose={() => {
-                    setEmailOpenModal(false);
-                  }}
-                >
-                  <Card
-                    sx={{
-                      position: "absolute" as "absolute",
-                      top: "50%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                    }}
-                  >
-                    <CardContent>
-                      <Typography variant="h3">Email:</Typography>
-                      <Typography variant="h5">
-                        Send me an email @ this address and I will get back to
-                        you as soon as possible
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        sx={{ p: 3 }}
-                        onClick={() => {
-                          // copy("caasilemroh@gmail.com");
-                        }}
-                      >
-                        caasilemroh@gmail.com
-                      </Typography>
-                      {/* <Typography variant="overline">
-                        {value.value ?? "copied to clipboard"}
-                      </Typography> */}
-                    </CardContent>
-                  </Card>
-                </Modal>
-              </Box>
-              <Typography></Typography>
-            </CardContent>
-          </Card>
-        </Box>
-      </Container>
-      <Footer />
+      <Helmet>
+        <title>Contact Isaac Hormel — Let’s build something useful</title>
+        <meta name="description" content="Book a conversation with software engineer Isaac Hormel about your product, website, or business software project." />
+        <link rel="canonical" href="https://isaachormel.com/contact" />
+      </Helmet>
+      <section className="page-hero">
+        <div className="page-wrap">
+          <p className="eyebrow">CONTACT</p>
+          <h1>Let’s talk about <span>what’s next.</span></h1>
+          <p>Have an idea, a bottleneck, or a system that needs a fresh start? Tell me a little about it and we’ll figure out whether I can help.</p>
+        </div>
+      </section>
+      <section className="section page-wrap">
+        <div className="contact-layout">
+          <div className="contact-card">
+            <p className="eyebrow">A GOOD FIRST STEP</p>
+            <h2>Book a quick conversation.</h2>
+            <p>Choose a time that works for you through my existing Calendly page. We can talk through the goal, the challenges, and what a sensible next step might look like.</p>
+            <div className="contact-actions">
+              <PopupButton
+                url="https://calendly.com/isaachormel"
+                rootElement={document.body}
+                text="Schedule with Calendly ↗"
+                className="button"
+              />
+              <a className="button button-outline" href="mailto:caasilemroh@gmail.com">Email me</a>
+            </div>
+          </div>
+          <nav className="social-links" aria-label="Other ways to connect">
+            <a href="mailto:caasilemroh@gmail.com">Email · caasilemroh@gmail.com <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/isaac-hormel/" target="_blank" rel="noreferrer">LinkedIn · Isaac Hormel <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/rewrite123" target="_blank" rel="noreferrer">GitHub · rewrite123 <span aria-hidden="true">↗</span></a>
+          </nav>
+        </div>
+      </section>
     </>
   );
-};
-export default Contact;
+}

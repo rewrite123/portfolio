@@ -1,3 +1,9 @@
+---
+title: "The future of AI in software development"
+date: "2023-04-03"
+description: "A look at how AI is changing software development, why clear direction still matters, and how developers can adapt their workflows."
+---
+
 Since the introduction of ChatGPT, and the continuous improvement through ChatGPT-3 and the new ChatGPT-4, the entire world of software development has been drastically shaken up. The skill cieling and barrier to entry in this field has dropped significantly. In the coming years we can expect competition to rise sharply as you no longer need to be an expert to build complicated systems like payment service processors or build a CMS from scratch. Roles are shifting more and more away from developers and more towards AI directors to generate prompts for coding solutions and to glue code outputs from prompts together into a single coherent piece of software. I want to take a moment and discuss how I am going to stay competetive in this new world of AI and lay out a general strategy for how I think developers should move forward generally.
 
 ## Sink or swim - new waves of technology are coming and treading water by trying to just be the best code writer you can be isn't enough to survive the rough seas ahead.

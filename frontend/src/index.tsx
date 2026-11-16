@@ -1,12 +1,14 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "@fontsource-variable/space-grotesk";
+import "@fontsource/dm-mono/400.css";
+import "@fontsource/dm-mono/500.css";
+import "./style/index.scss";
 
-import App from './App';
+const target = document.getElementById("portfolio");
 
-window.addEventListener('load', (loadEvent)=>{
-  const targetElement = document.getElementById('portfolio');
-  if(targetElement){
-    const root = createRoot(targetElement);
-    root.render(<App />);
-  }
-})
+if (!target) {
+  throw new Error('Missing required "#portfolio" mount element.');
+}
+
+createRoot(target).render(<App />);
