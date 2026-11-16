@@ -29,7 +29,7 @@ export default function About() {
       <section className="section page-wrap">
         <div className="story-grid">
           <aside className="story-aside">
-            <img src={portrait} alt="Portrait of Isaac Hormel" width={800} height={800} loading="lazy" />
+            <img src={portrait} alt="Portrait of Isaac Hormel" width={900} height={900} loading="lazy" />
             <p className="eyebrow" style={{ marginTop: "1rem" }}>ENGINEER · BUILDER · LIFELONG LEARNER</p>
           </aside>
           <article className="story-copy">
