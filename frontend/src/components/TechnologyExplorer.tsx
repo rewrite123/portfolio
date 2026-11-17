@@ -71,7 +71,7 @@ export default function TechnologyExplorer() {
         schedule(() => {
           setSelected(null);
           erase();
-        }, 2200);
+        }, 5000);
       };
       const type = () => {
         setQuery(term.slice(0, ++length));
