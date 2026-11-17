@@ -22,6 +22,7 @@ export default function TechnologyExplorer() {
   const [demoStopped, setDemoStopped] = useState(false);
   const [demoPlaying, setDemoPlaying] = useState(false);
   const userInteracted = useRef(false);
+  const searchRef = useRef<HTMLInputElement>(null);
   const detailRef = useRef<HTMLElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
   const matchingTechnologies = useMemo(() => searchTechnologies(query), [query]);
@@ -30,12 +31,23 @@ export default function TechnologyExplorer() {
   useEffect(() => {
     if (demoStopped) return;
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const search = searchRef.current;
+    if (!search) return;
     let timer: number;
+    let visible = false;
+    let pending: (() => void) | undefined;
+    let pendingDelay = 900;
     let previousTerm = "";
     let previousSelection = "";
     const schedule = (callback: () => void, delay: number) => {
+      pending = callback;
+      pendingDelay = delay;
+      if (!visible || motionPreference.matches || userInteracted.current) return;
       timer = window.setTimeout(() => {
-        if (!userInteracted.current && !motionPreference.matches) callback();
+        if (visible && !userInteracted.current && !motionPreference.matches) {
+          pending = undefined;
+          callback();
+        }
       }, delay);
     };
     const startSearch = () => {
@@ -70,17 +82,25 @@ export default function TechnologyExplorer() {
     };
     const updateMotion = () => {
       window.clearTimeout(timer);
-      setDemoPlaying(!motionPreference.matches);
+      setDemoPlaying(visible && !motionPreference.matches);
       if (!motionPreference.matches) schedule(startSearch, 900);
       else {
         setQuery("");
         setSelected(null);
       }
     };
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting && entry.intersectionRatio > 0;
+      window.clearTimeout(timer);
+      setDemoPlaying(visible && !motionPreference.matches && !userInteracted.current);
+      if (visible && pending) schedule(pending, pendingDelay);
+    });
+    observer.observe(search);
     updateMotion();
     motionPreference.addEventListener("change", updateMotion);
     return () => {
       window.clearTimeout(timer);
+      observer.disconnect();
       motionPreference.removeEventListener("change", updateMotion);
     };
   }, [demoStopped]);
@@ -123,6 +143,7 @@ export default function TechnologyExplorer() {
         <label className="visually-hidden" htmlFor="technology-search">Search technologies</label>
         <div className={`tech-search-input${demoPlaying ? " is-demo-playing" : ""}`}>
           <input
+            ref={searchRef}
             id="technology-search"
             className="search-field"
             type="search"
