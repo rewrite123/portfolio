@@ -109,6 +109,12 @@ h1, h2, h3 { letter-spacing: -.045em; }
 .detail-enter { animation: detail-enter .35s ease-out both; }
 @keyframes detail-enter { from { transform: translateX(14px); } to { transform: translateX(0); } }
 .tech-search { grid-area: search; min-width: 0; }
+.tech-search-input { position: relative; }
+.tech-search-input.is-demo-playing .search-field { color: transparent; }
+.tech-search-input.is-demo-playing .search-field::placeholder { color: transparent; }
+.tech-demo-text { position: absolute; inset: 1px; padding: 1rem 1.1rem; pointer-events: none; font: .85rem var(--mono); white-space: pre; }
+.tech-demo-caret { display: inline-block; height: 1em; margin-left: 1px; border-left: 2px solid var(--green); vertical-align: -.1em; animation: tech-caret-blink 1s step-end infinite; }
+@keyframes tech-caret-blink { 50% { opacity: 0; } }
 .tech-results { grid-area: results; min-width: 0; max-height: 42rem; overflow-y: auto; padding: 0 .4rem .4rem 0; }
 .tech-results:focus-visible { outline: 2px solid var(--yellow); outline-offset: 4px; }
 .tech-group { margin-bottom: 1.5rem; }

@@ -20,26 +20,88 @@ export default function TechnologyExplorer() {
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<Technology | null>(null);
   const [demoStopped, setDemoStopped] = useState(false);
+  const [demoPlaying, setDemoPlaying] = useState(false);
   const userInteracted = useRef(false);
   const detailRef = useRef<HTMLElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
   const matchingTechnologies = useMemo(() => searchTechnologies(query), [query]);
   const categories = [...new Set(matchingTechnologies.map((technology) => technology.category))];
 
   useEffect(() => {
-    if (demoStopped || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setTimeout(() => {
-      if (userInteracted.current) return;
-      const term = suggestions[Math.floor(Math.random() * suggestions.length)];
-      const matches = searchTechnologies(term);
-      setQuery(term);
-      setSelected(matches[Math.floor(Math.random() * matches.length)] ?? null);
-    }, 2600);
-    return () => window.clearTimeout(timer);
+    if (demoStopped) return;
+    const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let timer: number;
+    let previousTerm = "";
+    let previousSelection = "";
+    const schedule = (callback: () => void, delay: number) => {
+      timer = window.setTimeout(() => {
+        if (!userInteracted.current && !motionPreference.matches) callback();
+      }, delay);
+    };
+    const startSearch = () => {
+      const terms = suggestions.filter((term) => term !== previousTerm);
+      const term = terms[Math.floor(Math.random() * terms.length)];
+      previousTerm = term;
+      setSelected(null);
+      let length = 0;
+      const erase = () => {
+        setQuery(term.slice(0, --length));
+        if (length > 0) schedule(erase, 65);
+        else schedule(startSearch, 500);
+      };
+      const select = () => {
+        const matches = searchTechnologies(term);
+        const alternatives = matches.filter(({ name }) => name !== previousSelection);
+        const choices = alternatives.length ? alternatives : matches;
+        const technology = choices[Math.floor(Math.random() * choices.length)];
+        setSelected(technology);
+        previousSelection = technology.name;
+        schedule(() => {
+          setSelected(null);
+          erase();
+        }, 2200);
+      };
+      const type = () => {
+        setQuery(term.slice(0, ++length));
+        if (length < term.length) schedule(type, 120);
+        else schedule(select, 650);
+      };
+      type();
+    };
+    const updateMotion = () => {
+      window.clearTimeout(timer);
+      setDemoPlaying(!motionPreference.matches);
+      if (!motionPreference.matches) schedule(startSearch, 900);
+      else {
+        setQuery("");
+        setSelected(null);
+      }
+    };
+    updateMotion();
+    motionPreference.addEventListener("change", updateMotion);
+    return () => {
+      window.clearTimeout(timer);
+      motionPreference.removeEventListener("change", updateMotion);
+    };
   }, [demoStopped]);
+
+  useEffect(() => {
+    if (!demoPlaying || !selected || userInteracted.current) return;
+    const results = resultsRef.current;
+    const card = results?.querySelector<HTMLElement>('[aria-pressed="true"]');
+    if (results && card) {
+      const containerBounds = results.getBoundingClientRect();
+      const cardBounds = card.getBoundingClientRect();
+      if (cardBounds.top < containerBounds.top || cardBounds.bottom > containerBounds.bottom) {
+        results.scrollTop += cardBounds.top - containerBounds.top;
+      }
+    }
+  }, [demoPlaying, selected]);
 
   const stopDemo = () => {
     userInteracted.current = true;
     setDemoStopped(true);
+    setDemoPlaying(false);
   };
 
   const selectTechnology = (technology: Technology) => {
@@ -52,26 +114,37 @@ export default function TechnologyExplorer() {
   return (
     <div
       className="tech-explorer"
+      onClickCapture={stopDemo}
       onPointerDownCapture={stopDemo}
       onFocusCapture={stopDemo}
       onKeyDownCapture={stopDemo}
     >
       <div className="tech-search">
         <label className="visually-hidden" htmlFor="technology-search">Search technologies</label>
-        <input
-          id="technology-search"
-          className="search-field"
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search technologies or categories…"
-          aria-controls="technology-results"
-        />
-        <p className="tech-hint" aria-live="polite">
+        <div className={`tech-search-input${demoPlaying ? " is-demo-playing" : ""}`}>
+          <input
+            id="technology-search"
+            className="search-field"
+            type="search"
+            value={query}
+            onChange={(event) => {
+              stopDemo();
+              setQuery(event.target.value);
+            }}
+            placeholder="Search technologies or categories…"
+            aria-controls="technology-results"
+          />
+          {demoPlaying && (
+            <span className="tech-demo-text" aria-hidden="true">
+              {query}<span className="tech-demo-caret" />
+            </span>
+          )}
+        </div>
+        <p className="tech-hint" aria-live={demoPlaying ? "off" : "polite"}>
           {matchingTechnologies.length} technologies · select one to explore
         </p>
       </div>
-      <div className="tech-results" id="technology-results" role="region" aria-label="Technology results" tabIndex={0}>
+      <div ref={resultsRef} className="tech-results" id="technology-results" role="region" aria-label="Technology results" tabIndex={0}>
         {categories.map((category) => (
           <section className="tech-group" key={category} aria-label={category}>
             <h3>{category}</h3>
@@ -95,7 +168,7 @@ export default function TechnologyExplorer() {
           <p className="tech-empty">No matches yet. Try another technology or category.</p>
         )}
       </div>
-      <aside ref={detailRef} className="tech-detail" aria-live="polite" aria-label="Technology details">
+      <aside ref={detailRef} className="tech-detail" aria-live={demoPlaying ? "off" : "polite"} aria-label="Technology details">
         {selected ? (
           <div className="detail-enter" key={selected.name}>
             <div className="tech-detail-top">
