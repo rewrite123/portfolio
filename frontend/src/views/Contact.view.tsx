@@ -29,11 +29,9 @@ export default function Contact() {
                 text="Schedule with Calendly ↗"
                 className="button"
               />
-              <a className="button button-outline" href="mailto:caasilemroh@gmail.com">Email me</a>
             </div>
           </div>
           <nav className="social-links" aria-label="Other ways to connect">
-            <a href="mailto:caasilemroh@gmail.com">Email · caasilemroh@gmail.com <span aria-hidden="true">↗</span></a>
             <a href="https://www.linkedin.com/in/isaac-hormel/" target="_blank" rel="noreferrer">LinkedIn · Isaac Hormel <span aria-hidden="true">↗</span></a>
             <a href="https://github.com/rewrite123" target="_blank" rel="noreferrer">GitHub · rewrite123 <span aria-hidden="true">↗</span></a>
           </nav>

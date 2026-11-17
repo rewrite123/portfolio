@@ -124,3 +124,13 @@ test("the site and static articles use matching, available favicon assets", asyn
     assert.match(html, /href="\/images\/favicon.svg"/);
   }
 });
+
+test("the production build does not publish the removed personal email address", async () => {
+  const removedAddress = ["caasilemroh", "gmail.com"].join("@");
+  for (const entry of await readdir(dist, { recursive: true, withFileTypes: true })) {
+    if (!entry.isFile()) continue;
+    const file = path.join(entry.parentPath, entry.name);
+    const contents = await readFile(file);
+    assert.ok(!contents.toString("utf8").toLowerCase().includes(removedAddress), `${path.relative(dist, file)} must not contain the personal email`);
+  }
+});
